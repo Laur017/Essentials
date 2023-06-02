@@ -620,6 +620,297 @@ hr{
 }
 
 /**
+*   Course Upload
+*/
+.courseUpload{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    border: 1px solid #232323;
+    padding: 1em;
+    letter-spacing: 2px;
+}
+
+.courseUpload label {
+    display: flex;
+    gap: 1em;
+}
+
+.courseUpload h2 {
+    display: flex;
+    gap: 0.5em;
+}
+
+.denumiremtf {
+    color: green;
+}
+
+.ytlink-upl{
+    border: none;
+    border-bottom: 1px solid #232323;
+    width: 20em;
+    padding: 0.5em 0 0 0.5em;
+    letter-spacing: 2px;
+}
+
+.courseUpload button {
+    background-color: #232323;
+    color: white;
+    letter-spacing: 2px;
+    border: 2px solid #232323;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 5px;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.upl-btn:hover {
+    transition: all 0.3s ease-in;
+    background-color: white;
+    color: green;
+    border: 2px solid green;
+}
+
+.bck-btn:hover{
+    transition: all 0.3s ease-in;
+    background-color: white;
+    color: #232323;
+}
+
+.upload-btns{
+    display: flex;
+    gap: 2em;
+}
+
+.file-upl{
+    display: none;
+    
+}
+
+.upl-file{
+    cursor: pointer;
+    border: 2px solid #232323;
+    padding: 1em;
+    width: 22em;
+    align-items: center;
+    transition: all 0.5s ease-in;
+    border-radius: 5px;
+}
+
+.upl-file-uploaded{
+    cursor: pointer;
+    border: 2px solid green;
+    background: rgba(0, 128, 0, 0.299);
+    padding: 1em;
+    width: 22em;
+    align-items: center;
+    transition: all 0.5s ease-in;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    /* color: white; */
+}
+
+.upl-file img, .upl-file-uploaded img {
+    width: 1.5em;
+}
+
+.upl-file:hover, .upl-file-uploaded:hover {
+    transition: all 0.5s ease-in;
+    background-color: #ebebeb;
+    border-radius: 20px;
+    color: #232323;
+}
+
+.attention-div{
+    background: rgba(255, 0, 0, 0.272);
+    padding: 0 1em 0 1em;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.attention-div img {
+    width: 2em;
+    height: 2em;
+}
+
+/**
+*   Create QUIZ
+*/
+
+.create-quiz {
+    border: 1px solid #232323;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5em;
+}
+
+.create-quiz button img {
+    width: 2em;
+}
+
+.quiz-btn-add {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    border: 1px solid #232323;
+    background-color: white;
+    font-family: 'Source Code Pro', monospace;
+    letter-spacing: 1px;
+    padding: 0.5em 0 0.5em 1em;
+    border-radius: 25px;
+    color: #232323;
+    cursor: pointer;
+    width: 15em;
+}
+
+.quiz-btn-add:hover {
+    font-weight: 600;
+    background-color: #efefef;
+}
+
+.quiz-tab {
+    margin-bottom: 2em;
+}
+
+.quiz-que {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.quiz-que input {
+    width: 20em;
+    padding: 0.5em 0 0.5em 1em;
+    letter-spacing: 2px;
+    border: none;
+    border-bottom: 2px solid #232323 ;
+}
+
+.quiz-ans{
+    display: flex;
+    gap: 1em;
+    margin-bottom: 1em;
+    align-items: center;
+}
+
+.quiz-ans input[type=text]{
+    width: 15em;
+    border: 1px solid #232323;
+    letter-spacing: 1px;
+    padding: 0.5em 0 0.5em 0.5em;
+}
+
+.quiz-tab button {
+    background: white;
+    border: none;
+    border-bottom: 1px solid #232323;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.quiz-tab button:hover {
+    color: blue;
+    border-bottom: 1px solid blue;
+}
+
+.quiz-ans button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+}
+
+.quiz-ans button:hover{
+    border: none;
+    background: #ffc9c9;
+}
+
+.quiz-que button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+}
+
+.quiz-que button:hover {
+    border-bottom: 2px solid #232323 ;
+    background: #ffc9c9;
+}
+
+.quiz-btn-create {
+    background: #232323;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    gap: 1em;
+    font-family: 'Source Code Pro', monospace;
+    letter-spacing: 2px;
+    border-radius: 2em;
+    width: 20em;
+    margin-top: 1em;
+    border-radius: 1px solid white;
+    cursor: pointer;
+}
+
+.quiz-btn-create img {
+    width: 1.5em;
+}
+
+.quiz-btn-create:hover{
+    transition: all 0.3s ease-in;
+    font-weight: 600;
+    background-color: #535353;
+}
+
+/**
+*   List Courses
+*/
+
+.cours-list{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    color: #232323;
+    /* background-color: red; */
+    gap: 2em;
+    margin-bottom: 2em;
+    padding: 1em;
+    border: 1px solid #232323;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.cours-list:hover{
+    color: blue;
+    border: 1px solid blue;
+}
+
+.list-cours{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/**
 *   Media Query
 */
 

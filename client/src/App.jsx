@@ -11,6 +11,10 @@ import Main from './components/Main/Main'
 import Learn from './components/Learn/Learn'
 import Admin from './components/Admin/Admin'
 import WaitingPage from './components/Waiting/WaitingPage'
+import MainTeacher from './components/MainTeacher/MainTeacher'
+import CourseUpload from './components/Upload/CourseUpload'
+import QuizPage from './components/CreateQuiz/QuizPage'
+import ListCourses from './components/ListCourses/ListCourses'
 
 const App = () => {
   const [logged, setLogged] = useState(false)
@@ -60,8 +64,16 @@ const App = () => {
         } />
 
         <Route path='/main/student' element={<Main />} />
+        <Route path='/main/teacher' element={<MainTeacher />} />
         <Route path='/mainadmin' element={<Admin />} />
         <Route path='/wait' element={<WaitingPage/>} />
+
+        <Route path='/courses-list' element={<ListCourses />} />
+
+        <Route path='/upload-course' element={<CourseUpload />} />
+        <Route path='/create-quiz' element={<QuizPage />} />
+
+        
 
         <Route path='/learn' element={
           <div className="learn-d">

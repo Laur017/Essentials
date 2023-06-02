@@ -42,6 +42,48 @@ app.get('/api/userInfo', (req,res)=>{
     })
 })
 
+app.get('/api/getCourses', (req,res)=>{
+    const sqlSelect = "SELECT curs_id, curs_name FROM courses WHERE id_sub = ?;"
+
+    const id = req.query.sub_id;
+
+    db.query(sqlSelect,[id], (err,result)=>{
+        res.send(result)
+        console.log(result)
+    })
+})
+
+app.get('/api/getAvailableSubjects', (req, res) => {
+    const sqlSelect =
+      'SELECT sub_id, sub_name, sub_des FROM subjects s JOIN users u ON FIND_IN_SET(s.sub_id, u.subject) WHERE u.email = ?;';
+  
+    const email = req.query.email;
+  
+    console.log(email);
+  
+    db.query(sqlSelect, [email], (err, result) => {
+    res.send(result)
+    console.log(result)
+    })
+})
+
+app.get('/api/getCourseInfo', (req,res)=>{
+    const sqlSelect =
+    "SELECT curs_id, curs_name, curs_yt, curs_file FROM courses WHERE curs_id = ? ;"
+
+    const id = req.query.id
+
+    console.log(id)
+
+    
+    db.query(sqlSelect, [id], (err, result) => {
+        res.send(result)
+        console.log(result)
+        })
+
+})
+  
+
 app.post('/api/insert', (req,res)=>{
 
     const username = req.body.username
@@ -85,8 +127,25 @@ app.post('/api/addUser', (req,res)=>{
     })
 })
 
+app.post('/api/addCourse', (req, res) => {
+    const id = req.body.id
+    const link_yt = req.body.link_yt
+    const link_file = req.body.link_file
+  
+    console.log(link_file)
 
-
+    const sqlUpdate = "UPDATE courses SET curs_yt = ?, curs_file = ? WHERE curs_id = ?"
+    db.query(sqlUpdate, [link_yt, link_file, id], (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).json({ message: 'Error occurred while updating course' })
+      } else {
+        console.log(result)
+        res.status(200).json({ message: 'Course updated successfully' })
+      }
+    })
+  })
+  
 
 
 

@@ -1,0 +1,11 @@
+Model Information:
+* title:	tiny room diorama
+* source:	https://sketchfab.com/3d-models/tiny-room-diorama-c860c838ec9d40daa0251fd2b11403e2
+* author:	Cgi BOX (https://sketchfab.com/joswin18)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "tiny room diorama" (https://sketchfab.com/3d-models/tiny-room-diorama-c860c838ec9d40daa0251fd2b11403e2) by Cgi BOX (https://sketchfab.com/joswin18) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

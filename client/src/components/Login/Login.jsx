@@ -15,7 +15,7 @@ const Login = (props) => {
         .then((response)=>{
             setUsersInfo(response.data)
         })
-    },[usersInfo])
+    },[])
 
     function submitLogin (event) {
         event.preventDefault()
@@ -34,7 +34,8 @@ const Login = (props) => {
                 if(i.role === "student"){
                     navigate('/main/student')
                 } else if (i.role === "teacher" ){
-                    navigate('/main/teacher')
+                    console.log(i.email)
+                    navigate('/main/teacher', { state:{email:i.email}})
                 }
             }
         })}

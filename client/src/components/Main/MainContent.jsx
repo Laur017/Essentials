@@ -39,7 +39,7 @@ const MainContent = (props) => {
             <div className="buttons">
                 <Link to="/learn"><button>Learn</button></Link>
                 <Link to="/practice"><button>Practice</button></Link>
-                <Link to="/test"><button>Test</button></Link>
+                {/* <Link to="/test"><button>Test</button></Link> */}
             </div>
             <div className='content-next'>
             <button onClick={()=>{props.handleSign(1);}} className='content-minus'>-</button>
