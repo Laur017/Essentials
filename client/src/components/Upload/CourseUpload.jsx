@@ -33,6 +33,8 @@ const CourseUpload = () => {
 
     useEffect(() => {
         console.log(courseData.curs_name);
+        setSelectedFile(courseData.curs_file);
+        setYtLink(courseData.curs_yt)
       }, [courseData]);
 
     const formHandler = (e) => {
@@ -51,14 +53,14 @@ const CourseUpload = () => {
     }
 
     const uploadFiles = (file) => {
-        if(!file) return (alert("Please select a file to upload"))
+        if(!file && !ytLink) {return (alert("Please select a file to upload"))}else{
     
         const storageRef = ref(storage, `/files/${file.name}`)
         const uploadTask = uploadBytesResumable(storageRef, file)
 
         uploadTask.on("state_changed", (snapshot) => {
-            const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        
+            const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100) 
+
             setProgress(prog)
         }, (err)=> console.log(err),
         () => {
@@ -71,6 +73,9 @@ const CourseUpload = () => {
             )
         }
         )
+
+        setYtLink('')
+      }
     }
     if (isLoading) {
         return <div>Loading...</div>;

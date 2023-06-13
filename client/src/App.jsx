@@ -11,11 +11,10 @@ import Main from './components/Main/Main'
 import Learn from './components/Learn/Learn'
 import Admin from './components/Admin/Admin'
 import WaitingPage from './components/Waiting/WaitingPage'
-import MainTeacher from './components/MainTeacher/MainTeacher'
 import CourseUpload from './components/Upload/CourseUpload'
 import QuizPage from './components/CreateQuiz/QuizPage'
 import ListCourses from './components/ListCourses/ListCourses'
-import Snake from './components/Home/Snake'
+
 
 const App = () => {
   const [logged, setLogged] = useState(false)
@@ -67,7 +66,6 @@ const App = () => {
         } />
 
         <Route path='/main' element={<Main />} />
-        <Route path='/main/teacher' element={<MainTeacher />} />
         <Route path='/mainadmin' element={<Admin />} />
         <Route path='/wait' element={<WaitingPage/>} />
 
