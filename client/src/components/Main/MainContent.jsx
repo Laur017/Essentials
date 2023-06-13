@@ -31,12 +31,12 @@ const MainContent = (props) => {
         if (aux === 1) {
             if (count > 0) {
                 setCount(count - 1)
-                props.handleSub(count - 1)
+                props.handleSub(subjects[count - 1].sub_name)
             } 
         } else if (aux === 2) {
             if (count < subjects.length - 1) {
                 setCount(count + 1)
-                props.handleSub(count + 1)
+                props.handleSub(subjects[count + 1].sub_name)
             }
         }
     }

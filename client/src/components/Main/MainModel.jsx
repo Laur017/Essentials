@@ -1,9 +1,9 @@
 import { useRef, Suspense } from 'react'
 import { Canvas, useFrame, useLoader, useThree, extend } from "@react-three/fiber"
 import { useSpring, a } from "@react-spring/three";
-import { Html, useProgress } from '@react-three/drei'
+import { Html, useProgress, OrbitControls } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import * as THREE from 'three'
 import Consola from './Consola1'
 import Coffee from './Coffee'
@@ -63,20 +63,21 @@ const MainModel = (props) => {
     //       </a.primitive>
     //     )
     //   }
-  
+    console.log(props.subject)
     return(
         <Canvas>
+          <OrbitControls />
             <Suspense fallback={<Loader />}>
                 {
-                  props.subject === 0
+                  props.subject === "Math"
                             ? <MathModel scale={0.6} rotation={[0.5, 0, 0]} position={[-1.9,0,0]}/>
-                            : props.subject === 1
+                            : props.subject === "Probabilistics"
                             ? <Dice scale={0.7} position={[0,-3,0]} rotation={[0, 1, 0]}/>
-                            : props.subject === 2
+                            : props.subject === "Databases"
                             ? <DatabaseModel scale={1.2} position={[-0.7,-2,0]} rotation={[0, 1.5, 0]}/>
-                            : props.subject === 3
+                            : props.subject === "Java"
                             ? <Coffee scale={1.1} rotation={[0.5, 0, 0]} position={[0,-1.5,0]}/>
-                            : props.subject === 4
+                            : props.subject === "Python"
                             ? <Dice scale={0.7} position={[0,-3,0]} rotation={[0, 1, 0]}/>
                             :<Consola scale={0.5} rotation={[1.6,-1.6, 0]}/>
                 }

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useLocation } from "react-router-dom"
 
 const Main = () => {
-    const [subject, setSubject] = useState(0)
+    const [subject, setSubject] = useState('')
     const location = useLocation()
     const {email} = location.state
     
