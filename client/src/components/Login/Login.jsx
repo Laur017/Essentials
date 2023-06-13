@@ -31,12 +31,13 @@ const Login = (props) => {
             if(i.email === email && i.password === password){
                 userFound = true
                 props.settingUser(i.user)
-                if(i.role === "student"){
-                    navigate('/main/student', { state:{email:i.email}})
-                } else if (i.role === "teacher" ){
-                    console.log(i.email)
-                    navigate('/main/teacher', { state:{email:i.email}})
-                }
+                // if(i.role === "student"){
+                //     navigate('/main/student', { state:{email:i.email, role:i.role}})
+                // } else if (i.role === "teacher" ){
+                //     console.log(i.email)
+                //     navigate('/main/teacher', { state:{email:i.email}})
+                // }
+                navigate('/main', { state:{email:i.email, role:i.role}})
             }
         })}
 

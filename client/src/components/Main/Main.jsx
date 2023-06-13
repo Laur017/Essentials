@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom"
 const Main = () => {
     const [subject, setSubject] = useState('')
     const location = useLocation()
-    const {email} = location.state
+    const {email, role} = location.state
     
     const handleSub = (aux) => {
         setSubject(aux)
@@ -14,7 +14,7 @@ const Main = () => {
 
     return(
         <div className="main">
-            <MainContent handleSub={handleSub} email={email}/>
+            <MainContent handleSub={handleSub} email={email} role={role}/>
             <div className="model-main">
               <MainModel subject={subject}/>
             </div>

@@ -45,14 +45,25 @@ const MainContent = (props) => {
         return <div>Loading...</div>
     }
 
+    const handleGoNextPage = (aux) => {
+        if (aux === 1){
+            props.role === "student" ?
+            navigate("/learn"):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:1, name:subjects[count].sub_name}})    
+        } else {
+            props.role === "student" ?
+            navigate("/practice"):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:2, name:subjects[count].sub_name}})
+        }
+    }
+
     return(
         <div className="text-content">
             <h2>{count + 1} {subjects[count].sub_name}</h2>
             <p>{subjects[count].sub_des}</p>
             <div className="buttons">
-                <Link to="/learn"><button>Learn</button></Link>
-                <Link to="/practice"><button>Practice</button></Link>
-                {/* <Link to="/test"><button>Test</button></Link> */}
+                <button onClick={() => handleGoNextPage(1)}>{props.role === "student" ? "Learn" : "Upload Course"}</button>
+                <button onClick={() => handleGoNextPage(2)}>{props.role === "student" ? "Practice" : "Upload Exercises"}</button>
             </div>
             <div className="content-next">
                 <button className='content-minus' onClick={() => handleSwitch(1)}>-</button>

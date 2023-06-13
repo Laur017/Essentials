@@ -66,7 +66,7 @@ const App = () => {
           </div>
         } />
 
-        <Route path='/main/student' element={<Main />} />
+        <Route path='/main' element={<Main />} />
         <Route path='/main/teacher' element={<MainTeacher />} />
         <Route path='/mainadmin' element={<Admin />} />
         <Route path='/wait' element={<WaitingPage/>} />
