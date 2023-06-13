@@ -1,31 +1,22 @@
 import MainContent from "./MainContent"
 import MainModel from "./MainModel"
 import { useState } from 'react'
+import { useLocation } from "react-router-dom"
 
 const Main = () => {
     const [subject, setSubject] = useState(0)
+    const location = useLocation()
+    const {email} = location.state
     
-    const handleSign = (aux) => {
-        if (aux === 1){
-            if(subject === 0){
-                setSubject(0)
-            }else{
-                setSubject(subject - 1)
-            }
-        } else {
-            if(subject === 4){
-                setSubject(4)
-            }else{
-                setSubject(subject + 1)
-            }
-        }
+    const handleSub = (aux) => {
+        setSubject(aux)
     }
 
     return(
         <div className="main">
-            <MainContent handleSign={handleSign} subject={subject}/>
+            <MainContent handleSub={handleSub} email={email}/>
             <div className="model-main">
-              {/* <MainModel subject={subject}/> */}
+              <MainModel subject={subject}/>
             </div>
           </div>
     )

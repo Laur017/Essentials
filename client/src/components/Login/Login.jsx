@@ -32,7 +32,7 @@ const Login = (props) => {
                 userFound = true
                 props.settingUser(i.user)
                 if(i.role === "student"){
-                    navigate('/main/student')
+                    navigate('/main/student', { state:{email:i.email}})
                 } else if (i.role === "teacher" ){
                     console.log(i.email)
                     navigate('/main/teacher', { state:{email:i.email}})
