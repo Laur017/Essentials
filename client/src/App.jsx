@@ -15,6 +15,7 @@ import MainTeacher from './components/MainTeacher/MainTeacher'
 import CourseUpload from './components/Upload/CourseUpload'
 import QuizPage from './components/CreateQuiz/QuizPage'
 import ListCourses from './components/ListCourses/ListCourses'
+import Snake from './components/Home/Snake'
 
 const App = () => {
   const [logged, setLogged] = useState(false)
@@ -41,7 +42,9 @@ const App = () => {
           <div className='home'>
             <HomeText />
             <div className='model-home'>
-              {/* <Home /> */}
+              <Home />
+              {/* <Snake /> */}
+
             </div>
           </div>
         } />

@@ -1,8 +1,9 @@
 import { useRef, Suspense } from 'react'
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber"
 import { useSpring, animated, config} from '@react-spring/web'
-import { Html, useProgress } from '@react-three/drei'
+import { Html, OrbitControls, useProgress } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import Snake from './Snake'
 
 
 
@@ -13,7 +14,7 @@ const Loader = () => {
 
 const Model = () => {
     const {camera} = useThree()
-    const room = useLoader(GLTFLoader, '/models/room2/room.gltf')
+    const room = useLoader(GLTFLoader, './models/room2/room.gltf')
     const homeRoom = useRef()
 
 
@@ -29,12 +30,15 @@ const Model = () => {
 }
 
 const Home = () => {
+    
     return(
-        <Canvas>
+        <Canvas style={{ background: "lightyellow" }} >
+            <OrbitControls />
             <Suspense fallback={<Loader />}>
-                <Model />
-                <ambientLight intensity={0.5} />
+                <Snake position={[-900,0,-1100]} scale={6}/>
+                <ambientLight intensity={1} />
                 <directionalLight />
+                
                 
             </Suspense>
         </Canvas>
