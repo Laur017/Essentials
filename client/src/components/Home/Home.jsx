@@ -4,6 +4,12 @@ import { useSpring, animated, config} from '@react-spring/web'
 import { Html, OrbitControls, useProgress } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import Snake from './Snake'
+import Consola from './Consola1'
+import Coffee from './Coffee'
+import Dice from './Dice2'
+import DatabaseModel from './Dbloop'
+import MathModel from './Pencil2'
+
 
 
 
@@ -32,11 +38,15 @@ const Model = () => {
 const Home = () => {
     
     return(
-        <Canvas style={{ background: "lightyellow" }} >
+        <Canvas >
             <OrbitControls />
             <Suspense fallback={<Loader />}>
-                <Snake position={[-900,0,-1100]} scale={6}/>
-                <ambientLight intensity={1} />
+                {/* <Consola scale={0.5} rotation={[1.6,-1.6, 0]}/> */}
+                {/* <Coffee scale={1.1} rotation={[0.5, 0, 0]} position={[0,-1.5,0]}/> */}
+                {/* <Dice scale={0.7} position={[0,-3,0]} rotation={[0, 1, 0]}/> */}
+                {/* <DatabaseModel scale={1.2} position={[-0.7,-2,0]} rotation={[0, 1.5, 0]}/> */}
+                <MathModel scale={0.6} rotation={[0.5, 0, 0]} position={[-1.9,0,0]}/>
+                <ambientLight intensity={1.5} />
                 <directionalLight />
                 
                 
