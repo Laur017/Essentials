@@ -82,6 +82,19 @@ app.get('/api/getCourseInfo', (req,res)=>{
         })
 
 })
+
+app.get('/api/getQuestionForAnswers', (req,res)=>{
+    const sqlSelect =
+    "SELECT id_que FROM questions WHERE que_text = ?;"
+
+    const que_text = req.query.que_text
+    
+    db.query(sqlSelect, [que_text], (err, result) => {
+        res.send(result)
+        console.log(result)
+        })
+
+})
   
 
 app.post('/api/insert', (req,res)=>{
@@ -120,6 +133,18 @@ app.post('/api/addQuestion', (req,res)=>{
     const sqlInsert  ="INSERT INTO questions (id_cours, que_text, correct_answ) VALUES (?, ?, ?);"
     
     db.query(sqlInsert,[id_curs, que_text, correct_answ], (err,result)=>{
+        console.log(result)
+    })
+})
+
+app.post('/api/addAnswer', (req,res)=>{
+
+    const question_id = req.body.question_id
+    const answer_text = req.body.question_id
+
+    const sqlInsert  ="INSERT INTO answers (question_id, answer_text) VALUES (?, ?);"
+    
+    db.query(sqlInsert,[question_id, answer_text], (err,result)=>{
         console.log(result)
     })
 })
