@@ -883,6 +883,16 @@ hr{
     background-color: #535353;
 }
 
+.quiz-add-que-btn{
+    background: rgba(0,0,0,0);
+    padding: 0.5em;
+    font-family: 'Source Code Pro', monospace;
+    letter-spacing: 1px;
+    border: 1px solid #232323;
+    margin-top: 1em;
+    border-radius: 2em;
+}
+
 /**
 *   List Courses
 */
