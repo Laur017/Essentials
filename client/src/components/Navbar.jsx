@@ -13,7 +13,6 @@ const Navbar = (props) => {
     }
 
     console.log(props.logged)
-    console.log(props.use)
 
 
     const navContent = props.logged ? 
@@ -34,7 +33,7 @@ const Navbar = (props) => {
 
     return(
         <nav>
-            <div ><Link to={props.logged ? "/main" :"/"} className="nav-title"><h2>Essentials</h2></Link></div>
+            <div onClick={()=>navigate(props.logged ? "/main" : "/")} className="nav-title"> <h2>Essentials</h2></div>
             { navContent }
         </nav>
     )

@@ -112,6 +112,18 @@ app.post('/api/deleteFromList', (req,res)=>{
     })
 })
 
+app.post('/api/addQuestion', (req,res)=>{
+
+    const id_curs = req.body.id_curs
+    const que_text = req.body.que_text
+    const correct_answ = req.body.correct_answ
+    const sqlInsert  ="INSERT INTO questions (id_cours, que_text, correct_answ) VALUES (?, ?, ?);"
+    
+    db.query(sqlInsert,[id_curs, que_text, correct_answ], (err,result)=>{
+        console.log(result)
+    })
+})
+
 app.post('/api/addUser', (req,res)=>{
 
     const user = req.body.user
