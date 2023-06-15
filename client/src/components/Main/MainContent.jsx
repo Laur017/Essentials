@@ -48,11 +48,11 @@ const MainContent = (props) => {
     const handleGoNextPage = (aux) => {
         if (aux === 1){
             props.role === "student" ?
-            navigate("/learn"):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:3, name:subjects[count].sub_name}}):
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:1, name:subjects[count].sub_name}})    
         } else {
             props.role === "student" ?
-            navigate("/practice"):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:4, name:subjects[count].sub_name}}):
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:2, name:subjects[count].sub_name}})
         }
     }

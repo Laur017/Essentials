@@ -76,11 +76,7 @@ const App = () => {
 
         
 
-        <Route path='/learn' element={
-          <div className="learn-d">
-              <Learn />
-          </div>
-        } />
+        <Route path='/learn' element={<Learn />} />
 
       </Routes>
     </div>

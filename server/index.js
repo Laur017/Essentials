@@ -95,6 +95,7 @@ app.get('/api/getQuestionForAnswers', (req,res)=>{
         })
 
 })
+
   
 
 app.post('/api/insert', (req,res)=>{
@@ -111,7 +112,6 @@ app.post('/api/insert', (req,res)=>{
 
     db.query(sqlInsert, [username, email, password, role, subject, year], (err,result)=>{
         console.log(result)
-        // console.log(err)
     })
 })
 
@@ -140,7 +140,7 @@ app.post('/api/addQuestion', (req,res)=>{
 app.post('/api/addAnswer', (req,res)=>{
 
     const question_id = req.body.question_id
-    const answer_text = req.body.question_id
+    const answer_text = req.body.answer_text
 
     const sqlInsert  ="INSERT INTO answers (question_id, answer_text) VALUES (?, ?);"
     

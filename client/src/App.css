@@ -482,30 +482,10 @@ nav{
 *   Learn Section
 */
 
-.learn-d{
-    /* background-color: aqua; */
-    width: 90%;
-    height: 80vh;
-}
-
-.learn{
-    width: 100%;
-    height: 100%;
-    /* background-color: red; */
-}
-
-.monitor{
-    width: 100%;
-    height: 100%;
-    /* background-color: red; */
-}
-
-.monitor iframe{
-    width: 120em;
-    height: 58em;
-    border: none;
-    border-radius: 2em 2em 0 0;
-    transition: all 0.3s linear;
+.learn-div{
+    background-color: red;
+    width: 50em;
+    height: 50em;
 }
 
 /* .monitor iframe:hover{

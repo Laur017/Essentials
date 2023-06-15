@@ -47,10 +47,8 @@ const QuizPageContent = () => {
         correct_answ: question.selectedAnswer,
       }); 
   
-      // Get the ID of the newly added question
       const questionId = questionResponse.data.insertId;
-  
-      // Add each answer to the 'answers' table
+
       question.answers.forEach(async (answer) => {
         await Axios.post('http://localhost:3001/api/addAnswer', {
           question_id: questionId,
