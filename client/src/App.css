@@ -158,10 +158,12 @@ nav{
 
 .home-txt h3 {
     font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .home-txt p {
     width: 70%;
+    letter-spacing: 1px;
 }
 
 .home-txt-btn {
@@ -483,11 +485,40 @@ nav{
 */
 
 .learn-div{
-    background-color: red;
-    width: 50em;
-    height: 50em;
+    padding: 1em 3em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2em;
+    border: 2px solid #232323;
 }
 
+.learn-div a {
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    color: #232323;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    transition: all 0.3s ease-in;
+}
+
+.learn-div a:hover{
+    transition: all 0.3s ease-in;
+    border-bottom: 1px solid #232323;
+    letter-spacing: 2px;
+}
+
+.learn-div iframe{
+    border-radius: 1.5em;
+    border: 2px solid #232323;
+    transition: all 0.3s ease-in;
+}
+
+.learn-div iframe:hover{
+    transition: all 0.3s ease-in;
+    border-radius: 1em;
+    border: 2px solid white;
+}
 /* .monitor iframe:hover{
     width:190em;
     height: 80em;

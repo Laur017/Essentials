@@ -29,7 +29,6 @@ const Learn = () => {
         src={data?.curs_yt} // Use optional chaining to prevent errors if data is null or undefined
         width="744"
         height="504"
-        frameBorder="0"
         title="2023-02-23 17-00-57.mkv"
         webkitallowfullscreen
         mozallowfullscreen
