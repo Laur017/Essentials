@@ -134,6 +134,7 @@ app.post('/api/addQuestion', (req,res)=>{
     
     db.query(sqlInsert,[id_curs, que_text, correct_answ], (err,result)=>{
         console.log(result)
+        res.send(result)
     })
 })
 

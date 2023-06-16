@@ -33,14 +33,9 @@ const QuizPageContent = () => {
   });
 
 
-
-
-
-
   const onSubmit = (data) => {
     console.log("Form submitted!" , data)
     data.questions.forEach(async (question) => {
-      // Add the question to the 'questions' table
       const questionResponse = await Axios.post('http://localhost:3001/api/addQuestion', {
         id_curs: id,
         que_text: question.question,
@@ -48,6 +43,7 @@ const QuizPageContent = () => {
       }); 
   
       const questionId = questionResponse.data.insertId;
+      console.log(questionId)
 
       question.answers.forEach(async (answer) => {
         await Axios.post('http://localhost:3001/api/addAnswer', {
@@ -55,7 +51,7 @@ const QuizPageContent = () => {
           answer_text: answer.name,
         });
       });
-    });
+    }); 
   };
   
 

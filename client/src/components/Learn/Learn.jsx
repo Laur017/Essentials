@@ -112,11 +112,11 @@ const Learn = () => {
       setMM(25);
       setQ(1);
     } else {
-      setMM(0);
-      setSS(9);
+      setMM(5);
+    //   setSS(9);
       setQ(2);
     }
-    // setSS(0);
+    setSS(0);
   };
 
   useEffect(() => {
