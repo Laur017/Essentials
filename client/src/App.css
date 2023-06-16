@@ -668,6 +668,7 @@ nav{
 .head-div-pom img{
     width: 1em;
     height: 1em;
+    cursor: pointer;
 }
 
 .mid-div-pom{

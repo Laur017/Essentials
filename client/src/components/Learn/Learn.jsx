@@ -9,11 +9,16 @@ import Send from './images-learn/send.png';
 import Bin from './images-learn/bin.png';
 import User from './images-learn/user.png';
 import Pause from './images-learn/pause.png';
+import Pause2 from './images-learn/pause-p.png';
 import Restart from './images-learn/restart.png';
 import Play from './images-learn/play-button.png';
+import Play2 from './images-learn/play-button-p.png';
 import { Configuration, OpenAIApi } from 'openai';
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 const Learn = () => {
+  const { width, height } = useWindowSize()
   const [data, setData] = useState(null);
   const [state, setState] = useState({});
   const [messages, setMessages] = useState([]);
@@ -24,7 +29,7 @@ const Learn = () => {
   const [mm, setMM] = useState(25);
   const [ss, setSS] = useState(0);
   const [q, setQ] = useState(1);
-  const [pauss, setPauss] = useState(false);
+  const [pauss, setPauss] = useState(true);
   const [showBot, setShowBot] = useState(false);
   const [showPom, setShowPom] = useState(false);
   const [showNot, setShowNot] = useState(false);
@@ -107,10 +112,11 @@ const Learn = () => {
       setMM(25);
       setQ(1);
     } else {
-      setMM(5);
+      setMM(0);
+      setSS(9);
       setQ(2);
     }
-    setSS(0);
+    // setSS(0);
   };
 
   useEffect(() => {
@@ -123,8 +129,12 @@ const Learn = () => {
           } else {
             clearInterval(timer);
             if (mm === 0) {
-              // Timer finished
+              <Confetti
+                width={width}
+                height={height}
+              />;
               handleRestartTimer(q === 1 ? 2 : 1);
+              window.alert("Timer is up!");
             } else {
               setMM((prevMinutes) => prevMinutes - 1);
               setSS(59);
@@ -133,9 +143,10 @@ const Learn = () => {
         });
       }, 1000);
     }
-
+  
     return () => clearInterval(timer);
   }, [pauss, mm, ss, q]);
+  
 
   const divOfBot = () => {
     return (
@@ -178,8 +189,8 @@ const Learn = () => {
         <h2>{`${mm < 10 ? '0' + mm : mm}:${ss < 10 ? '0' + ss : ss}`}</h2>
       </div>
       <div className="foot-div-pom">
-        <img src={Play} onClick={() => setPauss(false)} />
-        <img src={Pause} onClick={() => setPauss(true)} />
+        <img src={pauss ? Play : Play2} onClick={() => setPauss(false)} />
+        <img src={pauss ?Pause2 : Pause} onClick={() => setPauss(true)} />
         <img src={Restart} onClick={() => handleRestartTimer(q)} />
       </div>
     </div>
