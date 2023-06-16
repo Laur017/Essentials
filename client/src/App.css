@@ -519,12 +519,129 @@ nav{
     border-radius: 1em;
     border: 2px solid white;
 }
-/* .monitor iframe:hover{
-    width:190em;
-    height: 80em;
-    transition: all 0.3s linear;
-    top: 0;
-} */
+
+.learn-page-div{
+    display: flex;
+}
+
+.learn-btns-add{
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+}
+
+.learn-btns-add button {
+    background-color: rgba(0,0,0,0);
+    border:none;
+    border-top: 2px solid #232323;
+    border-bottom: 2px solid #232323;
+    border-right: 2px solid #232323;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    width: 4em;
+    height: 4em;
+}
+
+.learn-btns-add button:nth-child(1):hover{
+    background-color: azure;
+}
+
+.learn-btns-add button:nth-child(2):hover{
+    background-color: #ffc9c9;
+}
+
+.learn-btns-add button:nth-child(3):hover{
+    background-color:bisque;
+}
+
+.learn-btns-add button img {
+    width: 3em;
+}
+
+.div-of-bot{
+    border-top: 2px solid #232323;
+    border-bottom: 2px solid #232323;
+    border-right: 2px solid #232323;
+    padding: 1em;
+    width: 20em;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.head-div-bot{
+    display: flex;
+    gap: 1em;
+    justify-content: space-between;
+}
+
+.head-div-bot img{
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+
+.mid-div-bot{
+    width: 20em;
+    height: 20em;
+    /* border-bottom: 1px solid #232323; */
+    border-top: 1px solid #232323;
+    overflow-y: auto;
+    max-height: 20em;
+    overflow-x: hidden;
+}
+
+.foot-div-bot{
+    display: flex;
+    align-items: center;
+}
+
+.foot-div-bot textarea {
+    width: 22em;
+    height: 5em;
+    letter-spacing: 1.5px;
+    resize: none;
+    border: 1px solid #232323;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    padding: 0.5em 0.5em;
+}
+
+.foot-div-bot img{
+    width: 2em;
+    cursor: pointer;
+    border: 1px solid #232323;
+    padding: 1.3em 0.3em;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+
+}
+
+.mid-div-bot h4 {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.mid-div-bot h4 img {
+    width: 1em;
+}
+
+.clear-bot-conv{
+    width: 1.5em;
+    cursor: pointer;
+    /* margin-right: 0; */
+    /* background-color: #232323; */
+    margin-left: 18.5em;
+    margin-top: 0.5em;
+}
+
+.messages-container {
+    height: 100%;
+    overflow-y: auto;
+  }
+  
 
 /**
 *   Admin Main
