@@ -1,46 +1,54 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom';
 import Axios from 'axios';
-import Bot from './robot.png'
-import Pomodoro from './pomodoro.png'
-import Notes from './writing.png'
-import Close from './close.png'
-import Send from './send.png'
-import Bin from './bin.png'
-import User from './user.png'
-import { Configuration, OpenAIApi} from 'openai'
+import Bot from './images-learn/robot.png';
+import Pomodoro from './images-learn/pomodoro.png';
+import Notes from './images-learn/writing.png';
+import Close from './images-learn/close.png';
+import Send from './images-learn/send.png';
+import Bin from './images-learn/bin.png';
+import User from './images-learn/user.png';
+import Pause from './images-learn/pause.png';
+import Restart from './images-learn/restart.png';
+import Play from './images-learn/play-button.png';
+import { Configuration, OpenAIApi } from 'openai';
 
 const Learn = () => {
-  const [data, setData] = useState(null)
-  const [state, setState] = useState({})
-  const [messages, setMessages] = useState([])
-  const location = useLocation()
-  const [input, setInput] = useState('')
-  const [que, setQue] = useState('')
-  const [res, setRes] = useState('')
-  const [showBot, setShowBot] = useState(false)
-  const [showPom, setShowPom] = useState(false)
-  const [showNot, setShowNot] = useState(false)
-  const messagesEndRef = useRef(null)
+  const [data, setData] = useState(null);
+  const [state, setState] = useState({});
+  const [messages, setMessages] = useState([]);
+  const location = useLocation();
+  const [input, setInput] = useState('');
+  const [que, setQue] = useState('');
+  const [res, setRes] = useState('');
+  const [mm, setMM] = useState(25);
+  const [ss, setSS] = useState(0);
+  const [q, setQ] = useState(1);
+  const [pauss, setPauss] = useState(false);
+  const [showBot, setShowBot] = useState(false);
+  const [showPom, setShowPom] = useState(false);
+  const [showNot, setShowNot] = useState(false);
+  const messagesEndRef = useRef(null);
   const configuration = new Configuration({
     apiKey: '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',
-  })
-  const openai = new OpenAIApi(configuration)
-  const handleButt = (aux) =>{
-    if(aux===1){
-        setShowPom(false)
-        setShowNot(false)
-        setShowBot(!showBot)
-    } else if(aux===2){
-        setShowPom(!showPom)
-        setShowNot(false)
-        setShowBot(false)
+  });
+  const openai = new OpenAIApi(configuration);
+
+  const handleButt = (aux) => {
+    if (aux === 1) {
+      setShowPom(false);
+      setShowNot(false);
+      setShowBot(!showBot);
+    } else if (aux === 2) {
+      setShowPom(!showPom);
+      setShowNot(false);
+      setShowBot(false);
     } else {
-        setShowPom(false)
-        setShowNot(!showNot)
-        setShowBot(false)
+      setShowPom(false);
+      setShowNot(!showNot);
+      setShowBot(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (location.pathname === '/learn' && location.state) {
@@ -56,10 +64,12 @@ const Learn = () => {
     }
   }, [location]);
 
-  const sendAI = async() =>{
-    setQue(input)
-    setInput('')
-    // const response = await openai.createCompletion({
+  const sendAI = async () => {
+    setQue(input);
+    setInput('');
+
+    // await openai
+    //   .createCompletion({
     //     model: "text-davinci-003",
     //     prompt: input,
     //     temperature: 0,
@@ -67,26 +77,67 @@ const Learn = () => {
     //     top_p: 1,
     //     frequency_penalty: 0.0,
     //     presence_penalty: 0.0
+    //   })
+    //   .then(response => {
+    //     const newResponse = response.data.choices[0].text;
+    //     if (newResponse !== res) {
+    //       setRes(newResponse);
+    //       setMessages(prevMessages => [...prevMessages, input, newResponse]);
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.log('Error:', error);
     //   });
-    // setRes(response.data.choices[0].text);
-    // setRes('Raspuns de la bot !')
-  }
+  };
+
   useEffect(() => {
     if (que && res) {
       setMessages((prevMessages) => [...prevMessages, que, res]);
     }
   }, [que, res]);
 
-
-  
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
 
-  const divOfBot = () => {
+  const handleRestartTimer = (aux) => {
+    if (aux === 1) {
+      setMM(25);
+      setQ(1);
+    } else {
+      setMM(5);
+      setQ(2);
+    }
+    setSS(0);
+  };
 
+  useEffect(() => {
+    let timer;
+    if (!pauss) {
+      timer = setInterval(() => {
+        setSS((prevSeconds) => {
+          if (prevSeconds > 0) {
+            return prevSeconds - 1;
+          } else {
+            clearInterval(timer);
+            if (mm === 0) {
+              // Timer finished
+              handleRestartTimer(q === 1 ? 2 : 1);
+            } else {
+              setMM((prevMinutes) => prevMinutes - 1);
+              setSS(59);
+            }
+          }
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(timer);
+  }, [pauss, mm, ss, q]);
+
+  const divOfBot = () => {
     return (
       <div className='div-of-bot'>
         <div className="head-div-bot">
@@ -96,7 +147,10 @@ const Learn = () => {
         <div className="mid-div-bot">
           <div className="messages-container">
             {messages.map((message, indx) => (
-              <h4 key={indx}><img src={indx % 2 === 0 ? User : Bot} />{message}</h4>
+              <h4 key={indx}>
+                <img src={indx % 2 === 0 ? User : Bot} />
+                {message}
+              </h4>
             ))}
             <div ref={messagesEndRef} /> {/* Empty div used to scroll to the bottom */}
           </div>
@@ -109,51 +163,58 @@ const Learn = () => {
       </div>
     );
   };
-  
 
-  const divOfPom =() =>(
-    <div onClick={()=>handleButt(2)} className='div-of-pom'>
-        Pomodoro
+  const divOfPom = () => (
+    <div className='div-of-pom'>
+      <div className="head-div-pom">
+        <h3>Pomodoro Clock:</h3>
+        <img src={Close} onClick={() => handleButt(2)} />
+      </div>
+      <div className="mid-div-pom">
+        <div className="select-timer-pom">
+          <button onClick={() => handleRestartTimer(1)}>Pomodoro</button>
+          <button onClick={() => handleRestartTimer(2)}>Short Break</button>
+        </div>
+        <h2>{`${mm < 10 ? '0' + mm : mm}:${ss < 10 ? '0' + ss : ss}`}</h2>
+      </div>
+      <div className="foot-div-pom">
+        <img src={Play} onClick={() => setPauss(false)} />
+        <img src={Pause} onClick={() => setPauss(true)} />
+        <img src={Restart} onClick={() => handleRestartTimer(q)} />
+      </div>
     </div>
-  )
+  );
 
-  const divOfNot =() =>{
+  const divOfNot = () => {
     return (
-    <div onClick={()=>handleButt(3)} className='div-of-not'>
+      <div onClick={() => handleButt(3)} className='div-of-not'>
         Notes
-    </div>
-  )}
-
+      </div>
+    );
+  };
 
   return (
     <div className="learn-page-div">
-        <div className="learn-div">
-            <h1>{state.name}</h1>
-            <iframe
-                src={data?.curs_yt}
-                width="744"
-                height="504"
-                title="2023-02-23 17-00-57.mkv"
-                webkitallowfullscreen
-                mozallowfullscreen
-                allowFullScreen
-            ></iframe>
-            <a href={data?.curs_file} download={`Course - ${data?.curs_name} `}>
-                Download the course
-            </a>
-        </div>
-        <div className="learn-btns-add">
-            {showBot?
-                divOfBot():
-                <button onClick={()=>handleButt(1)}><img src={Bot} /></button>}
-            {showPom?
-                divOfPom():
-                <button onClick={()=>handleButt(2)}><img src={Pomodoro} /></button>}
-            {showNot?
-                divOfNot():
-                <button onClick={()=>handleButt(3)}><img src={Notes} /></button>}
-                    
-        </div>
+      <div className="learn-div">
+        <h1>{state.name}</h1>
+        <iframe
+          src={data?.curs_yt}
+          width="744"
+          height="504"
+          title="2023-02-23 17-00-57.mkv"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowFullScreen
+        ></iframe>
+        <a href={data?.curs_file} download={`Course - ${data?.curs_name} `}>
+          Download the course
+        </a>
+      </div>
+      <div className="learn-btns-add">
+        {showBot ? divOfBot() : <button onClick={() => handleButt(1)}><img src={Bot} /></button>}
+        {showPom ? divOfPom() : <button onClick={() => handleButt(2)}><img src={Pomodoro} /></button>}
+        {showNot ? divOfNot() : <button onClick={() => handleButt(3)}><img src={Notes} /></button>}
+      </div>
     </div>
   );
 };
