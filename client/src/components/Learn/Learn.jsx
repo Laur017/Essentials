@@ -13,12 +13,13 @@ import Pause2 from './images-learn/pause-p.png';
 import Restart from './images-learn/restart.png';
 import Play from './images-learn/play-button.png';
 import Play2 from './images-learn/play-button-p.png';
-import Mic from './images-learn/mic.png';
-import Mic2 from './images-learn/mic2.png';
+// import Mic from './images-learn/mic.png';
+// import Mic2 from './images-learn/mic2.png';
 import { Configuration, OpenAIApi } from 'openai';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 import jsPDF from 'jspdf'
+
 
 const Learn = () => {
   const { width, height } = useWindowSize()
@@ -169,7 +170,7 @@ const Learn = () => {
                 {message}
               </h4>
             ))}
-            <div ref={messagesEndRef} /> {/* Empty div used to scroll to the bottom */}
+            <div ref={messagesEndRef} />
           </div>
         </div>
         <img src={Bin} onClick={() => setMessages([])} className='clear-bot-conv' />
@@ -215,7 +216,7 @@ const Learn = () => {
   
     doc.save(`${noteTitle ? noteTitle : state.name + "_notes"}.pdf`);
   }
-  
+
 
   const divOfNot = () => {
     return (
@@ -230,7 +231,7 @@ const Learn = () => {
         </div>
         <div className="foot-div-not">
           <button onClick={handleDownloadNotes}>Download your notes</button>
-          <img src={micOn ? Mic2 : Mic} onClick={()=>setMicOn(!micOn)}/>
+          {/* <img src={listening ? Mic2 : Mic} onClick={handleToggleMic}/> */}
         </div>
       </div>
     );
