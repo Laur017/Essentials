@@ -14,7 +14,7 @@ import WaitingPage from './components/Waiting/WaitingPage'
 import CourseUpload from './components/Upload/CourseUpload'
 import QuizPage from './components/CreateQuiz/QuizPage'
 import ListCourses from './components/ListCourses/ListCourses'
-
+import Practice from './components/Practice/Practice'
 
 const App = () => {
   const [logged, setLogged] = useState(false)
@@ -68,6 +68,8 @@ const App = () => {
         
 
         <Route path='/learn' element={<Learn />} />
+        <Route path='/practice' element={<Practice />} />
+
 
       </Routes>
     </div>

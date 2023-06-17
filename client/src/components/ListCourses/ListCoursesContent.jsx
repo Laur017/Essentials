@@ -37,7 +37,7 @@ const ListCoursesContent = (props) => {
                 state:{id:id, upl:3, name:name, sub_id:props.sub_id, sub_name:props.name}
             })
         } else {
-            navigate('/',{
+            navigate('/practice',{
                 state:{id:id, upl:4, name:name, sub_id:props.sub_id, sub_name:props.name}
             })
         }

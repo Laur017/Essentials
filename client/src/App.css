@@ -1184,6 +1184,68 @@ hr{
 }
 
 /**
+*   Practice Page
+*/
+
+.practice-div {
+    width: 40em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quiz-base{
+    border: 3px solid #535353;
+    border-radius: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.quiz-raspunsuri{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.quiz-btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.quiz-btns > button {
+    background-color: #232323;
+    border: 1px solid #232323;
+    letter-spacing: 1px;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.quiz-btns > button:hover{
+    transition: all 0.3s ease-in;
+    color: #232323;
+    background-color: white;
+}
+
+.quiz-raspuns >input[type="radio"]{
+    display: none;
+}
+
+.quiz-raspuns > label {
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+
+.quiz-raspuns >input[type="radio"]:checked + label {
+    background-color: #53535356;
+    color: white;
+}
+
+/**
 *   Media Query
 */
 
