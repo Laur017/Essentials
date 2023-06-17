@@ -654,7 +654,7 @@ nav{
     border-bottom: 2px solid #232323;
     border-right: 2px solid #232323;
     border-radius: 0 1em 1em 0;
-    padding: 0.5em;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -715,10 +715,78 @@ nav{
     cursor: pointer;
 }
 
+.div-of-not{
+    width: 20em;
+    height: 30em;
+    padding: 1em;
+    border-top: 2px solid #232323;
+    border-bottom: 2px solid #232323;
+    border-right: 2px solid #232323;
+     border-radius: 0 1em 1em 0;
+}
+
+.mid-div-not {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mid-div-not input {
+    border: none;
+    border-bottom: 1px solid #232323;
+    letter-spacing: 2px;
+    width: 90%;
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+.mid-div-not textarea{
+    width: 25em;
+    height: 25em;
+    letter-spacing: 1.5px;
+    resize: none;
+    border: 1px solid #232323;
+    border-radius: 5px;
+    padding: 0.5em 0.5em;
+}
+
+.foot-div-not{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5em;
+    gap: 1em;
+}
+
+.foot-div-not > button {
+    border: 1px solid white;
+    color: white;
+    background-color: #232323;
+    border-radius: 1em;
+    padding: 0 1em;
+    width: 15em;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.foot-div-not > button:hover{
+    transition: all 0.3s ease-in;
+    background-color: white !important;
+    border: 1px solid #232323;
+    color: #232323;
+}
+
+.foot-div-not > img {
+    width: 1.5em;
+    height: 1.5em;
+    cursor: pointer;
+}
 
 /**
 *   Admin Main
 */
+
 .admin-main {
     width: 80%;
 }

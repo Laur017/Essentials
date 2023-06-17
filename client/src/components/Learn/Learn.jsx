@@ -13,9 +13,12 @@ import Pause2 from './images-learn/pause-p.png';
 import Restart from './images-learn/restart.png';
 import Play from './images-learn/play-button.png';
 import Play2 from './images-learn/play-button-p.png';
+import Mic from './images-learn/mic.png';
+import Mic2 from './images-learn/mic2.png';
 import { Configuration, OpenAIApi } from 'openai';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
+import jsPDF from 'jspdf'
 
 const Learn = () => {
   const { width, height } = useWindowSize()
@@ -33,6 +36,9 @@ const Learn = () => {
   const [showBot, setShowBot] = useState(false);
   const [showPom, setShowPom] = useState(false);
   const [showNot, setShowNot] = useState(false);
+  const [micOn, setMicOn] = useState(false);
+  const [noteTitle, setNoteTitle] = useState('')
+  const [noteText, setNoteText] = useState('')
   const messagesEndRef = useRef(null);
   const configuration = new Configuration({
     apiKey: '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',
@@ -196,10 +202,36 @@ const Learn = () => {
     </div>
   );
 
+  const handleDownloadNotes = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(22);
+    doc.setFont('helvetica', 'bold');
+    doc.text(20, 20, `${noteTitle ? noteTitle : "Notes from the " + state.name + " course"}`);
+  
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'normal');
+    const lines = doc.splitTextToSize(noteText, 180); 
+    doc.text(20, 30, lines);
+  
+    doc.save(`${noteTitle ? noteTitle : state.name + "_notes"}.pdf`);
+  }
+  
+
   const divOfNot = () => {
     return (
-      <div onClick={() => handleButt(3)} className='div-of-not'>
-        Notes
+      <div className='div-of-not'>
+        <div className="head-div-pom">
+          <h3>Write some notes:</h3>
+          <img src={Close} onClick={() => handleButt(3)} />
+        </div>
+        <div className="mid-div-not">
+          <input type="text" placeholder='Title' value={noteTitle} onChange={(e) => setNoteTitle(e.target.value)}/>
+          <textarea placeholder='Write your notes' value={noteText} onChange={(e) => setNoteText(e.target.value)}></textarea>
+        </div>
+        <div className="foot-div-not">
+          <button onClick={handleDownloadNotes}>Download your notes</button>
+          <img src={micOn ? Mic2 : Mic} onClick={()=>setMicOn(!micOn)}/>
+        </div>
       </div>
     );
   };
