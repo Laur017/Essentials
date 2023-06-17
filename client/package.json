@@ -28,7 +28,7 @@
     "react-spring": "^9.7.1",
     "react-use": "^17.4.0",
     "react-youtube": "^10.1.0",
-    "three": "^0.151.2"
+    "three": "^0.151.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

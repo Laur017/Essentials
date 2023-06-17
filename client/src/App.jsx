@@ -37,16 +37,7 @@ const App = () => {
       <Navbar logged={logged} user={user} disSet={disSet}/>
       
       <Routes>
-        <Route path='/' element={
-          <div className='home'>
-            <HomeText />
-            <div className='model-home'>
-              <Home />
-              {/* <Snake /> */}
-
-            </div>
-          </div>
-        } />
+        <Route path='/' element={<Home />} />
         <Route path='/login' element={
           <div className="login">
             <div className="model-login">
