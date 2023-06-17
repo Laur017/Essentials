@@ -83,20 +83,31 @@ app.get('/api/getCourseInfo', (req,res)=>{
 
 })
 
-app.get('/api/getQuestionForAnswers', (req,res)=>{
+app.get('/api/getQuestionsForQuiz', (req,res)=>{
     const sqlSelect =
-    "SELECT id_que FROM questions WHERE que_text = ?;"
+    "SELECT id_que, que_text, correct_answ FROM questions WHERE id_cours = ?;"
 
-    const que_text = req.query.que_text
+    const id_cours = req.query.id_cours
     
-    db.query(sqlSelect, [que_text], (err, result) => {
+    db.query(sqlSelect, [id_cours], (err, result) => {
         res.send(result)
         console.log(result)
         })
 
 })
 
-  
+app.get('/api/getAnswersForQuiz', (req,res)=>{
+    const sqlSelect =
+    "SELECT id_answer, answer_text,question_id FROM answers WHERE ic = ?;"
+
+    const ic = req.query.ic
+    
+    db.query(sqlSelect, [ic], (err, result) => {
+        res.send(result)
+        console.log(result)
+        })
+
+})
 
 app.post('/api/insert', (req,res)=>{
 
@@ -142,10 +153,11 @@ app.post('/api/addAnswer', (req,res)=>{
 
     const question_id = req.body.question_id
     const answer_text = req.body.answer_text
+    const ic = req.body.ic
 
-    const sqlInsert  ="INSERT INTO answers (question_id, answer_text) VALUES (?, ?);"
+    const sqlInsert  ="INSERT INTO answers (question_id, answer_text, ic) VALUES (?, ?, ?);"
     
-    db.query(sqlInsert,[question_id, answer_text], (err,result)=>{
+    db.query(sqlInsert,[question_id, answer_text,ic], (err,result)=>{
         console.log(result)
     })
 })

@@ -1201,12 +1201,13 @@ hr{
     display: flex;
     flex-direction: column;
     gap: 1em;
+    width: 30em;
 }
 
 .quiz-raspunsuri{
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 1.2em;
 }
 
 .quiz-btns{
@@ -1238,6 +1239,11 @@ hr{
 .quiz-raspuns > label {
     padding: 0.5em;
     border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.quiz-raspuns > label:hover{
+    background-color: #53535310;
 }
 
 .quiz-raspuns >input[type="radio"]:checked + label {
@@ -1245,6 +1251,82 @@ hr{
     color: white;
 }
 
+/**
+*   Check Answers Page
+*/
+
+.check-answ-div{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.check-answ-div > h1 {
+    letter-spacing: 2px;
+}
+
+.correct-div{
+    border: 3px solid green;
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 25em;
+}
+
+.wrong-div{
+    border: 3px solid rgb(173, 2, 2);
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 25em;
+}
+
+.correct-div > h3, .wrong-div > h3, .correct-div > h4, .wrong-div > h4 {
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+.correct-div > h3 {
+    border-bottom: 1px solid green;
+}
+
+.wrong-div > h3 {
+    border-bottom: 1px solid rgb(173, 2, 2);
+}
+
+.answers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+.check-ans-btns{
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.check-ans-btns > button {
+    background-color:#232323;
+    color: white;
+    border: 1px solid #232323;
+    padding: 1em 3em;
+    letter-spacing: 2px;
+    border-radius: 1em;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.check-ans-btns > button:hover{
+    background-color: white;
+    color: #232323;
+    transition: all 0.3s ease-in;
+}
+ 
 /**
 *   Media Query
 */

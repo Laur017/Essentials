@@ -59,11 +59,6 @@ const Login = (props) => {
                     Sign up
                 </Link>
             </p>
-            {/* <p>
-                <Link to="/">
-                    Forget Password ?
-                </Link>
-            </p> */}
         </div>
     )
 }

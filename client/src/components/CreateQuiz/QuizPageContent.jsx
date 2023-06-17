@@ -49,6 +49,7 @@ const QuizPageContent = () => {
         await Axios.post('http://localhost:3001/api/addAnswer', {
           question_id: questionId,
           answer_text: answer.name,
+          ic:id,
         });
       });
     }); 
