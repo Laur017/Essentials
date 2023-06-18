@@ -20,22 +20,26 @@ import CheckAnswers from './components/Practice/CheckAnswers'
 const App = () => {
   const [logged, setLogged] = useState(false)
   const [user, setUser] = useState('')
+  const [email, setEmail] = useState('')
+  const [role, setRole] = useState('')
 
   function disSet(){
     setLogged(false)
     setUser('')
   }
 
-  function settingUser(name) {
+  function settingUser(name,email,role) {
     setLogged(true)
     setUser(name)
+    setEmail(email)
+    setRole(role)
   }
 
 // TODO: Send info from the child to the parrent 
 
   return (
     <div className="App">
-      <Navbar logged={logged} user={user} disSet={disSet}/>
+      <Navbar logged={logged} user={user} disSet={disSet} email={email} role={role}/>
       
       <Routes>
         <Route path='/' element={<Home />} />

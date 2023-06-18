@@ -28,6 +28,7 @@ nav{
     color: #232323;
     text-decoration: none;
     transition: all 1s linear;
+    cursor: pointer;
 }
 
 .nav-title:hover{

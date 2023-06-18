@@ -24,13 +24,13 @@ const Login = (props) => {
 
         if(email === "laur.popa.01@gmail.com" && password === "parola123"){
             userFound = true
-            props.settingUser("~ A D M I N ~")
+            props.settingUser("~ A D M I N ~", "laur.popa.01@gmail.com","AYE")
             navigate('/mainadmin')
         }else{
         usersInfo.forEach(i => {
             if(i.email === email && i.password === password){
                 userFound = true
-                props.settingUser(i.user)
+                props.settingUser(i.user, i.email, i.role)
                 navigate('/main', { state:{email:i.email, role:i.role}})
             }
         })}

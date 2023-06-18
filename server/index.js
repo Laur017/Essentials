@@ -13,9 +13,37 @@ const db = mysql.createPool({
     database: 'essentialsdatabase'
 })
 
+const stripe = require("stripe")('sk_test_51NKGenIQQZ7VOqr89VCQPOjDwlsK82AInI9fklyJ3Qn4i41S0PcVhFgKaq8zHUgV7cTnRc5TPFQIUwLpwgsrFVsM00YzmNr8cE');
+
+app.use(express.static("public"));
+
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended:true}))
+
+const calculateOrderAmount = (items) => {
+    // Replace this constant with a calculation of the order's amount
+    // Calculate the order total on the server to prevent
+    // people from directly manipulating the amount on the client
+    return 1400;
+  };
+  
+  app.post("/api/create-payment-intent", async (req, res) => {
+    const { items } = req.body;
+  
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: calculateOrderAmount(items),
+      currency: "ron",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+  
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  });
 
 app.get('/api/getEmail', (req,res)=>{
     const sqlSelect = "SELECT email FROM users;"
@@ -194,6 +222,17 @@ app.post('/api/addCourse', (req, res) => {
         res.status(200).json({ message: 'Course updated successfully' })
       }
     })
+  })
+
+  app.post('/pay', async (req,res) =>{
+    const {email} = req.body
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: 1000,
+        curency: 'usd',
+        metadata: {integration_check: 'accept_a_payment'},
+        recepient_email: email
+    })
+    res.json({'client_secret': paymentIntent['client_secret']})
   })
   
 

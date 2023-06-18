@@ -12,7 +12,7 @@ const Navbar = (props) => {
         navigate("/")
     }
 
-    console.log(props.logged)
+    console.log("sunt logat - ", props.logged)
 
 
     const navContent = props.logged ? 
@@ -33,7 +33,7 @@ const Navbar = (props) => {
 
     return(
         <nav>
-            <div onClick={()=>navigate(props.logged ? "/main" : "/")} className="nav-title"> <h2>Essentials</h2></div>
+            <div onClick={()=>props.logged ? navigate('/main', { state:{email:props.email, role:props.role}} ) : navigate('/')} className="nav-title"> <h2>Essentials</h2></div>
             { navContent }
         </nav>
     )
