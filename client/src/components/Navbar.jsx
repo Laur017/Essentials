@@ -33,7 +33,7 @@ const Navbar = (props) => {
 
     return(
         <nav>
-            <div onClick={()=>props.logged ? navigate('/main', { state:{email:props.email, role:props.role}} ) : navigate('/')} className="nav-title"> <h2>Essentials</h2></div>
+            <div onClick={()=>props.logged ? navigate('/main', { state:{email:props.email, role:props.role, paid:1}} ) : navigate('/')} className="nav-title"> <h2>Essentials</h2></div>
             { navContent }
         </nav>
     )

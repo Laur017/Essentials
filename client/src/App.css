@@ -391,6 +391,11 @@ nav{
     height: 50em;
 }
 
+.main-plata {
+    width: 40%;
+    text-align: center;
+}
+
 .model-main{
     /* background-color: #D4B9FF; */
     width: 60%;

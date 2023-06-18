@@ -76,31 +76,31 @@ const Learn = () => {
     }
   }, [location]);
 
-  const sendAI = async () => {
-    setQue(input);
-    setInput('');
+  // const sendAI = async () => {
+  //   setQue(input);
+  //   setInput('');
 
-    // await openai
-    //   .createCompletion({
-    //     model: "text-davinci-003",
-    //     prompt: input,
-    //     temperature: 0,
-    //     max_tokens: 100,
-    //     top_p: 1,
-    //     frequency_penalty: 0.0,
-    //     presence_penalty: 0.0
-    //   })
-    //   .then(response => {
-    //     const newResponse = response.data.choices[0].text;
-    //     if (newResponse !== res) {
-    //       setRes(newResponse);
-    //       setMessages(prevMessages => [...prevMessages, input, newResponse]);
-    //     }
-    //   })
-    //   .catch(error => {
-    //     console.log('Error:', error);
-    //   });
-  };
+  //   await openai
+  //     .createCompletion({
+  //       model: "text-davinci-003",
+  //       prompt: input,
+  //       temperature: 0,
+  //       max_tokens: 100,
+  //       top_p: 1,
+  //       frequency_penalty: 0.0,
+  //       presence_penalty: 0.0
+  //     })
+  //     .then(response => {
+  //       const newResponse = response.data.choices[0].text;
+  //       if (newResponse !== res) {
+  //         setRes(newResponse);
+  //         setMessages(prevMessages => [...prevMessages, input, newResponse]);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log('Error:', error);
+  //     });
+  // };
 
   useEffect(() => {
     if (que && res) {

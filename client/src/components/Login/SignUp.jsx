@@ -2,13 +2,6 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import {Elements} from '@stripe/react-stripe-js'
-import {loadStripe} from '@stripe/stripe-js'
-import CheckoutForm from "./CheckoutForm";
-
-const stripePromise = loadStripe("pk_test_51NKGenIQQZ7VOqr817DlnhVmfsGFKhrYDP96tIiF6SrjwHaIuuhdVOvS5Kt5WcH8eJstVq7h2Vj8LDXAOxPGladY00CDLbHAfU");
-
-
 
 const SignUp = () => {
     const [username, setUsername] = useState('')
@@ -20,29 +13,6 @@ const SignUp = () => {
     const [subject,setSubject] = useState([])
     const [year,setYear] = useState('')
     const navigate = useNavigate()
-
-    const [clientSecret, setClientSecret] = useState("");
-
-    useEffect(() => {
-      // Create PaymentIntent as soon as the page loads
-      fetch("/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-      })
-        .then((res) => res.json())
-        .then((data) => setClientSecret(data.clientSecret));
-    }, []);
-  
-    const appearance = {
-      theme: 'stripe',
-    };
-    const options = {
-      clientSecret,
-      appearance,
-    };
-  
-  
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/api/getEmail')
@@ -209,13 +179,7 @@ const SignUp = () => {
                     </label>
                     </div>
                     )}
-                
-                {clientSecret && (
-                    <Elements options={options} stripe={stripePromise}>
-                    <CheckoutForm />
-                    </Elements>
-                )}
-                
+
                 <button onClick={submitRegister}>Sign Up</button>
             </div>
             <p>Already have an account ? <Link to="/login">Log In</Link></p>

@@ -63,7 +63,7 @@ app.get('/api/getPendingList', (req,res)=>{
 })
 
 app.get('/api/userInfo', (req,res)=>{
-    const sqlSelect = "SELECT user, email, password, role FROM users;"
+    const sqlSelect = "SELECT user, email, password, role, paid FROM users;"
 
     db.query(sqlSelect, (err,result)=>{
         res.send(result);

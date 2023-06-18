@@ -31,7 +31,7 @@ const Login = (props) => {
             if(i.email === email && i.password === password){
                 userFound = true
                 props.settingUser(i.user, i.email, i.role)
-                navigate('/main', { state:{email:i.email, role:i.role}})
+                navigate('/main', { state:{email:i.email, role:i.role, paid:i.paid}})
             }
         })}
 
