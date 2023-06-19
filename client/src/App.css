@@ -223,8 +223,8 @@ nav{
 */
 
 .login{
-    margin-top: 4em;
     display: flex;
+    align-items: center;
 }
 
 .login-form{
@@ -351,11 +351,7 @@ nav{
 .inp-subj{
     display: flex;
     flex-direction: column;
-    
-    /* background-color: red; */
-    /* margin-top: 1em; */
     width: 20em;
-    /* align-items: center; */
     justify-content: center;
 }
 
@@ -364,20 +360,17 @@ nav{
     justify-content: flex-start;
     gap: 1em;
     align-items: center;
-    /* justify-content: center; */
 }
-
-/* .inp-subj input{
-    width: 21em;
-    height: 2em;
-    padding-left: 1em;
-    letter-spacing: 1px;
-} */
 
 .inp-year{
     display: flex;
     align-items:flex-end;
     gap: 0.5em;
+}
+
+.model-login{
+    height: 20em;
+    width: 20em;
 }
 
 /**

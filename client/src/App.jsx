@@ -17,6 +17,7 @@ import ListCourses from './components/ListCourses/ListCourses'
 import Practice from './components/Practice/Practice'
 import CheckAnswers from './components/Practice/CheckAnswers'
 
+
 const App = () => {
   const [logged, setLogged] = useState(false)
   const [user, setUser] = useState('')
@@ -46,7 +47,7 @@ const App = () => {
         <Route path='/login' element={
           <div className="login">
             <div className="model-login">
-              {/* <LoginModel /> */}
+              <LoginModel model={2}/>
             </div>
               <Login settingUser={settingUser}/>
           </div>
@@ -55,7 +56,7 @@ const App = () => {
         <Route path='/signup' element={
           <div className="login">
             <div className="model-login">
-              {/* <LoginModel /> */}
+              <LoginModel model={1}/>
             </div>
               <SignUp />
           </div>
