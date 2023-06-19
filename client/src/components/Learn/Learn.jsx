@@ -76,9 +76,9 @@ const Learn = () => {
     }
   }, [location]);
 
-  // const sendAI = async () => {
-  //   setQue(input);
-  //   setInput('');
+  const sendAI = async () => {
+    setQue(input);
+    setInput('');
 
   //   await openai
   //     .createCompletion({
@@ -100,7 +100,7 @@ const Learn = () => {
   //     .catch(error => {
   //       console.log('Error:', error);
   //     });
-  // };
+  };
 
   useEffect(() => {
     if (que && res) {
