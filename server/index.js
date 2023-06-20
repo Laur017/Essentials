@@ -70,6 +70,14 @@ app.get('/api/userInfo', (req,res)=>{
     })
 })
 
+app.get('/api/roleInfo', (req,res)=>{
+    const sqlSelect = "SELECT user, email, subject FROM users WHERE role = ? and paid = 1 ;"
+    const role = req.query.role
+    db.query(sqlSelect,[role], (err,result)=>{
+        res.send(result);
+    })
+})
+
 app.get('/api/getCourses', (req,res)=>{
     const sqlSelect = "SELECT curs_id, curs_name FROM courses WHERE id_sub = ?;"
 

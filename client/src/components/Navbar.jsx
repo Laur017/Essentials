@@ -16,7 +16,7 @@ const Navbar = (props) => {
 
 
     const navContent = props.logged ? 
-    (
+    (   
         <div className="nav-user">
             <h2 onClick={()=>setIsUserClicked(!isUserClicked)}>{props.user}</h2>
             <div className={isUserClicked? "open-down" : ""}>
@@ -24,6 +24,7 @@ const Navbar = (props) => {
                 <button className='logout-btn' onClick={handleLogedOut}>Log out</button>
             </div>
         </div>
+       
     ) : (
         <div className="nav-buttons">
             <Link to="/login"><button className="btn-one">Sign in</button></Link>

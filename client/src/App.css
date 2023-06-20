@@ -966,7 +966,8 @@ nav{
     text-align: center;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-     grid-gap: 5px;
+    grid-gap: 5px;
+    
 }
  .admin-list {
     text-align: center;
@@ -984,6 +985,17 @@ nav{
     border: 1px solid #232323;
     cursor: pointer;
     border-radius: 2px;
+    transition: all 0.3s ease-in;
+}
+
+.admin-list button strong {
+  color: white;
+}
+
+.admin-list button:hover{
+  background-color: #232323;
+  color: white;
+  transition: all 0.3s ease-in;
 }
 
 .admin-acc:hover{
@@ -1015,21 +1027,26 @@ hr{
     width: 10em;
 }
 
-/* @media screen and (max-width: 768px) {
-    .admin-main {
-      width: 100%;
-    }
-  
-    .admin-title-table,
-    .admin-list {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 10px;
-    }
-  
-    .admin-list button {
-      width: 100%;
-    }
-  } */
+.ad-btns {
+  display: flex;
+  gap: 2em;
+}
+
+.ad-btns > button {
+  background-color: #232323;
+  border: 1px solid #232323;
+  color: white;
+  padding: 0.5em 2em;
+  border-radius: 2em;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.ad-btns > button:hover {
+  background-color: rgba(0,0,0,0);
+  color: #232323;
+  transition: all 0.3s ease-in;
+}
 
 
 /**
