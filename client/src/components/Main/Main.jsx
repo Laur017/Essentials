@@ -28,6 +28,7 @@ const Main = () => {
             courses that the teachers are providing you should
             pay a fee of $10 
           </h1>
+          <div>
           <PayPalScriptProvider options={{"client-id":"AYbapIMjwUbmxI1BTDW0_F6bJ0VoSbpWJ5Rk1_QBdkASecauWOgxB43Jtzp4IPTxVKi2jDpRfHO7DgaB"}}>
             <PayPalButtons 
               createOrder={(data, actions) => {
@@ -48,6 +49,7 @@ const Main = () => {
               }}
             />
           </PayPalScriptProvider>
+          </div>
         </div>
       ) : (
         <div className="main">

@@ -13,8 +13,6 @@ import Pause2 from './images-learn/pause-p.png';
 import Restart from './images-learn/restart.png';
 import Play from './images-learn/play-button.png';
 import Play2 from './images-learn/play-button-p.png';
-// import Mic from './images-learn/mic.png';
-// import Mic2 from './images-learn/mic2.png';
 import { Configuration, OpenAIApi } from 'openai';
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'

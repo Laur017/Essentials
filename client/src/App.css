@@ -452,9 +452,20 @@ nav{
   }
   
   .main-plata {
-    width: 100%;
+    width: 50%;
     text-align: center;
-    margin-bottom: 2em; /* Add margin-bottom for spacing */
+    margin-bottom: 2em; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-plata>div{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 1em;
   }
   
   .model-main {
@@ -657,8 +668,8 @@ nav{
     border-bottom: 2px solid #232323;
     border-right: 2px solid #232323;
     padding: 1em;
-    width: 100%; 
-    height: auto; 
+    width: 20em; 
+    height: 30em; 
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -679,7 +690,7 @@ nav{
   
   .mid-div-bot {
     width: 100%;
-    max-height: 20em;
+    height: 20em;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -732,7 +743,7 @@ nav{
   }
   
   .div-of-pom {
-    width: 100%;
+    width: 20em;
     height: auto; 
     border-top: 2px solid #232323;
     border-bottom: 2px solid #232323;
@@ -799,8 +810,8 @@ nav{
   }
   
   .div-of-not {
-    width: 100%; 
-    height: auto; 
+    width: 20em; 
+    height: 30em; 
     padding: 1em;
     border-top: 2px solid #232323;
     border-bottom: 2px solid #232323;
@@ -878,13 +889,23 @@ nav{
     }
   
     .div-of-bot {
+      margin-left: 2em;
       padding: 0.5em;
-      width: 100%;
+      width: 15em;
       border: none;
       border-left: 2px solid #232323;
       border-bottom: 2px solid #232323;
       border-right: 2px solid #232323;
       border-radius: 0 0 10px 10px ;
+    }
+
+    .clear-bot-conv{
+      margin-left: 13em;
+    }
+
+    .foot-div-bot img {
+      width: 1em;
+      padding: 1.03em 0.5em;
     }
   
     .head-div-bot {
@@ -893,6 +914,11 @@ nav{
   
     .mid-div-bot {
       max-height: 15em;
+    }
+
+    .select-timer-pom > button{
+      border: none !important;
+      border-bottom: 2px solid #232323 !important;
     }
   
     .foot-div-bot textarea {
@@ -935,12 +961,12 @@ nav{
   
     .mid-div-not textarea {
       width: 100%;
-      height: 15em;
+      height: 25em;
     }
 
     .learn-btns-add{
         flex-direction: row;
-        margin-left: 8em;
+        margin-left: 0em;
 
     }
 

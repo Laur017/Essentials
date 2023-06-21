@@ -1,4 +1,4 @@
-import { useRef, Suspense } from 'react'
+import { useRef, Suspense, useEffect } from 'react'
 import { Canvas, useFrame, useLoader, useThree, extend } from "@react-three/fiber"
 import { Html, useProgress, OrbitControls } from '@react-three/drei'
 import Consola from './Consola1'
@@ -16,19 +16,19 @@ const Loader = () => {
 const MainModel = (props) => {
 
   let initialModel;
-  if (props.subject === "Math") {
-    initialModel = <MathModel scale={0.6} rotation={[0.5, 0, 0]} position={[-1.9, 0, 0]} />;
-  } else if (props.subject === "Probabilistics") {
-    initialModel = <Dice scale={0.7} position={[0, -3, 0]} rotation={[0, 1, 0]} />;
-  } else if (props.subject === "Databases") {
-    initialModel = <DatabaseModel scale={1.2} position={[-0.7, -2, 0]} rotation={[0, 1.5, 0]} />;
-  } else if (props.subject === "Java") {
-    initialModel = <Coffee scale={1.1} rotation={[0.5, 0, 0]} position={[0, -1.5, 0]} />;
-  } else if (props.subject === "Python") {
-    initialModel = <Pyth scale={0.5} position={[0,-1,0]}/>
-  } else {
-    initialModel = <Consola scale={0.5} rotation={[1.6, -1.6, 0]} />;
-  }
+    if (props.subject === "Game Development"){
+      initialModel = <Consola scale={0.5} rotation={[1.6, -1.6, 0]} />; }
+    else if (props.subject === "Probabilistics") {
+      initialModel = <Dice scale={0.7} position={[0, -3, 0]} rotation={[0, 1, 0]} />;
+    } else if (props.subject === "Databases") {
+      initialModel = <DatabaseModel scale={1.2} position={[-0.7, -2, 0]} rotation={[0, 1.5, 0]} />;
+    } else if (props.subject === "Java") {
+      initialModel = <Coffee scale={1.1} rotation={[0.5, 0, 0]} position={[0, -1.5, 0]} />;
+    } else if (props.subject === "Python") {
+      initialModel = <Pyth scale={0.5} position={[0,-1,0]}/>
+    } else {
+      initialModel = <MathModel scale={0.6} rotation={[0.5, 0, 0]} position={[-1.9, 0, 0]} />;
+    }
 
   return (
     <Canvas>
