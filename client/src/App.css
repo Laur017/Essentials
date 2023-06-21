@@ -1014,11 +1014,22 @@ nav{
     transition: all 0.3s ease-in;
 }
 
-.admin-list button strong {
+.pay-teachers-btn{
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #232323;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s ease-in;
+    padding: 1em 2em;
+    margin-left: 46em;
+    letter-spacing: 2px;
+}
+
+.pay-teachers-btn strong {
   color: white;
 }
 
-.admin-list button:hover{
+.admin-list button:hover, .pay-teachers-btn:hover{
   background-color: #232323;
   color: white;
   transition: all 0.3s ease-in;

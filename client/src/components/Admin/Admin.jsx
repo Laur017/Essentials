@@ -10,6 +10,7 @@ const Admin = () =>{
     const [stYear, setStYear] = useState([])
     const [totalMoney, setTotalMoney] = useState(0)
     const [whatToShow, setWhatToShow] = useState(1)
+    const [subjectTotals, setSubjectTotals] = useState([])
 
     useEffect(()=>{
         Axios.get('http://localhost:3001/api/getPendingList')
@@ -53,6 +54,10 @@ const Admin = () =>{
         
     },[])
 
+    const updateUsers = (email) => {
+        Axios.post('http://localhost:3001/api/updatePaid',{email:email})
+    }
+
     function handleAccept(user, email, password, role, sub, year){
         Axios.post('http://localhost:3001/api/addUser', {user:user, email:email, password:password, role:role, sub:sub, year:year, paid:role === "teacher" ? 1 : 0})
         .then(()=>{
@@ -68,7 +73,52 @@ const Admin = () =>{
             })
         setPendingList(prevPendingList => prevPendingList.filter(i => i.p_email !== em))
     }
-    
+
+    const handlePay = () => {
+        studentsList.forEach(student => {
+            updateUsers(student.email)
+        })
+        setStudentsList([])
+
+        let email= "popa.laur.01@gmail.com"
+
+        const accessToken = 'A21AALA51YDhSNSdJ8ppAs1MnCdWeE7zaOg_0C8qKNvJpC_yU9bN93O7eb5vfPAxi9qsgeI8hkL7pVtVkoq_7OzSj_OLAW5pg';
+
+        const senderBatchId = Math.random().toString(36).substring(7)
+
+        const payload = {
+          sender_batch_header: {
+            sender_batch_id: senderBatchId,
+            email_subject: 'Your Payout is here!'
+          },
+          items: [
+            {
+              recipient_type: 'EMAIL',
+              amount: {
+                value: "6.27",
+                currency: 'USD'
+              },
+              receiver: email,
+              note: 'Thank you for using our service!'
+            }
+          ]
+        }
+      
+        Axios.post('https://api.paypal.com/v1/payments/payouts', payload, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+          }
+        })
+          .then(response => {
+            console.log('Payment successful:', response.data);
+          })
+          .catch(error => {
+            console.error('Payment error:', error);
+          })
+      }
+
+
     return(
         <div className="admin-main">
             <div className="ad-btns">
@@ -121,24 +171,22 @@ const Admin = () =>{
                     <h4>{i.email}</h4>
                     <h4>{i.subject.split(",").map(k => k<3?"I ": k<5 ? "II " : "III " )}</h4>
                     <h4>{i.subject.split(",").map(k => {
+                        let total
                         if (k < 3) {
-                            return (
-                            stYear.filter(x => x === 1).length * 6 / (nrOfTeachers[0]) +
+                            total = stYear.filter(x => x === 1).length * 6 / (nrOfTeachers[0]) +
                             stYear.filter(x => x === 2).length / (nrOfTeachers[0]) +
                             stYear.filter(x => x === 3).length / (nrOfTeachers[0])
-                            );
+                            return (studentsList.length ? Number(Math.round(total+'e2')+'e-2'):0);
                         } else if (k < 5) {
-                            return (
-                            stYear.filter(x => x === 2).length * 7 / (nrOfTeachers[1]) +
+                            total = stYear.filter(x => x === 2).length * 7 / (nrOfTeachers[1]) +
                             stYear.filter(x => x === 3).length / (nrOfTeachers[1])
-                            );
+                            return (studentsList.length ? Number(Math.round(total+'e2')+'e-2'):0);
                         } else {
-                            return (
-                            stYear.filter(x => x === 3).length * 8 / (nrOfTeachers[2])
-                            );
+                            total = stYear.filter(x => x === 3).length * 8 / (nrOfTeachers[2])
+                            return (studentsList.length ? Number(Math.round(total+'e2')+'e-2'):0);
                         }
                         }).reduce((partialSum, a) => partialSum + a, 0)}</h4>
-                    <button><strong>$ </strong>Pay <strong> $</strong></button>
+                    
                 </div>)
             ): 
             <div className="empty-box">
@@ -146,8 +194,8 @@ const Admin = () =>{
                 <h4>No teacher !</h4>
             </div>
             }
-
             <hr />
+            <button className="pay-teachers-btn" onClick={()=>handlePay()}><strong>$ </strong>Pay Teachers <strong> $</strong></button>
         </>
         
         :        

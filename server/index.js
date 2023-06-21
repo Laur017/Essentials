@@ -209,6 +209,22 @@ app.post('/api/addCourse', (req, res) => {
     })
   })
 
+  app.post('/api/updatePaid',(req,res) => {
+    const email = req.body.email
+
+    const sqlUpdate = "UPDATE users SET paid = 2 WHERE email = ?;"
+  
+    db.query(sqlUpdate, [email], (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).json({ message: 'Error occurred while updating users' })
+      } else {
+        console.log(result)
+        res.status(200).json({ message: 'Users Paid updated successfully' })
+      }
+    })
+})
+
   app.post('/pay', async (req,res) =>{
     const {email} = req.body
     const paymentIntent = await stripe.paymentIntents.create({
