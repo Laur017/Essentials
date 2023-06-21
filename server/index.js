@@ -182,9 +182,10 @@ app.post('/api/addUser', (req,res)=>{
     const role = req.body.role
     const sub = req.body.sub
     const year = req.body.year
+    const paid = req.body.paid
 
-    const sqlInsert  ="INSERT INTO users (user, email, password, role, subject, year) VALUES (?, ?, ?, ?, ?, ?);"
-    db.query(sqlInsert,[user, email, password, role, sub, year], (err,result)=>{
+    const sqlInsert  ="INSERT INTO users (user, email, password, role, subject, year, paid) VALUES (?, ?, ?, ?, ?, ?, ?);"
+    db.query(sqlInsert,[user, email, password, role, sub, year, paid], (err,result)=>{
         console.log(result)
     })
 })

@@ -54,7 +54,7 @@ const Admin = () =>{
     },[])
 
     function handleAccept(user, email, password, role, sub, year){
-        Axios.post('http://localhost:3001/api/addUser', {user:user, email:email, password:password, role:role, sub:sub, year:year})
+        Axios.post('http://localhost:3001/api/addUser', {user:user, email:email, password:password, role:role, sub:sub, year:year, paid:role === "teacher" ? 1 : 0})
         .then(()=>{
             console.log("Addes real User !")
         })
