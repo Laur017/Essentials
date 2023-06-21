@@ -33,41 +33,40 @@ const QuizPageContent = () => {
   });
 
 
-  const onSubmit = (data) => {
-    console.log("Form submitted!" , data)
-    data.questions.forEach(async (question) => {
+  const onSubmit = async (data) => {
+    console.log("Form submitted!", data);
+  
+    for (const question of data.questions) {
+      console.log("Question:", question);
       const questionResponse = await Axios.post('http://localhost:3001/api/addQuestion', {
         id_curs: id,
         que_text: question.question,
         correct_answ: question.selectedAnswer,
-      }); 
+      });
   
       const questionId = questionResponse.data.insertId;
-      console.log(questionId)
-
-      question.answers.forEach(async (answer) => {
-        await Axios.post('http://localhost:3001/api/addAnswer', {
-          question_id: questionId,
-          answer_text: answer.name,
-          ic:id,
-        });
-      });
-    }); 
-  };
+      console.log("Question ID:", questionId);
   
-
-  // const addAnswers = (que_text) => {
-  //   Axios.get('http://localhost:3001/api/getQuestionForAnswers', {params: {que_text:que_text}}).then(res => console.log(res.data))
-  // }
-
-        // Axios.post('http://localhost:3001//api/addAnswer', {question_id:aux, answer_text:})
-      // console.log(aux) 
-
-
-
-
-
-
+      console.log("Answers:", question.answers);
+  
+      if (question.answers && question.answers.length > 0) {
+        for (let i = 0; i < question.answers.length; i++) {
+          const answer = question.answers[i]; // Fix: Retrieve current answer
+          console.log("Answer:", answer);
+          await Axios.post('http://localhost:3001/api/addAnswer', {
+            question_id: questionId,
+            answer_text: answer.name, // Fix: Use answer.name instead of question.answers[i].name
+            ic: id,
+          });
+        }
+      }
+    }
+  
+    };
+  
+  
+  
+  
   const addAnswer = (questionIndex) => {
     const currentAnswers = [...(watchQuestions[questionIndex]?.answers || [])];
     currentAnswers.push({ name: "", isCorrect: false });
@@ -166,8 +165,16 @@ const QuizPageContent = () => {
       </button>
       <div className="quiz-btns">
         <button className="bck-btn" onClick={handleGoBack}>Go Back</button>
-        <button type="submit" className="quiz-btn-create">
-          <img src={Create} />
+        <button type="submit" className="quiz-btn-create" 
+          onClick={(e) => {
+            e.preventDefault()
+            handleSubmit(onSubmit)
+            navigate('/courses-list', {
+              state: { sub_id: sub_id, upl: upl, name: sub_name },
+            })
+          }}
+          >
+        <img src={Create} />
           Create Quiz
         </button>
       </div>

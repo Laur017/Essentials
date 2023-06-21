@@ -60,7 +60,6 @@ const CourseUpload = () => {
 
         uploadTask.on("state_changed", (snapshot) => {
             const prog = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100) 
-
             setProgress(prog)
         }, (err)=> console.log(err),
         () => {
@@ -114,7 +113,7 @@ const CourseUpload = () => {
                 <button className="bck-btn" onClick={handleGoBack}>Go Back</button>
                 <button className="upl-btn" type="submit">Upload</button>
             </div>
-            {progress!==0 && <h5>Uploaded {progress}%</h5>}
+            {progress!==0 && <h5>Uploaded {progress}% {progress === 100 && navigate('/courses-list', {state:{sub_id:courseState.sub_id, upl:courseState.upl, name:courseState.sub_name}})}</h5>}
         </form>
     )
 }
