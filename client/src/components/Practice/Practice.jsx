@@ -15,7 +15,7 @@ export default function Practice() {
     if (location.pathname === "/practice" && location.state) {
       const { id, upl, name, sub_id, sub_name } = location.state
       setCourseState({ id, upl, name, sub_id, sub_name })
-      Axios.get('http://localhost:3001/api/getQuestionsForQuiz', { params: { id_cours: id } })
+      Axios.get('http://localhost:3001/api/getQuestionsForQuiz', { params: { id_cours:upl===5? id+18 : id } })
         .then((response) => {
           setCourseQuestions(response.data)
         })
@@ -24,7 +24,7 @@ export default function Practice() {
 
   useEffect(() => {
     if (courseQuestions.length > 0) {
-      Axios.get('http://localhost:3001/api/getAnswersForQuiz', { params: { ic: courseState.id } })
+      Axios.get('http://localhost:3001/api/getAnswersForQuiz', { params: { ic:courseState.upl===5? courseState.id+18:courseState.id } })
         .then((response) => {
           setCourseAnswers(response.data)
         })
@@ -95,7 +95,7 @@ export default function Practice() {
 
   return (
     <div className='practice-div'>
-      <h1>{courseState.name} Quiz</h1>
+      <h1>{courseState.name} {courseState.upl === 5 ? "Test" : "Quiz"}</h1>
       {courseQuestions.length > 0 && <Intrebarile />}
     </div>
   )

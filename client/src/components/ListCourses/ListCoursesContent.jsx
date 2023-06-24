@@ -36,16 +36,24 @@ const ListCoursesContent = (props) => {
              navigate('/learn',{
                 state:{id:id, upl:3, name:name, sub_id:props.sub_id, sub_name:props.name}
             })
-        } else {
+        } else if (props.upl === 4){
             navigate('/practice',{
                 state:{id:id, upl:4, name:name, sub_id:props.sub_id, sub_name:props.name}
+            })
+        } else if (props.upl === 5){
+            navigate('/practice',{
+                state:{id:id, upl:5, name:name, sub_id:props.sub_id, sub_name:props.name}
+            })
+        }else if (props.upl === 6){
+            navigate('/create-quiz',{
+                state:{id:id, upl:6, name:name, sub_id:props.sub_id, sub_name:props.name}
             })
         }
     }
 
     return(
         <>
-        <h1>{props.name} {props.upl === 1 || props.upl === 3?"Courses":"Exercises"}</h1>
+        <h1>{props.name} {props.upl === 1 || props.upl === 3?"Courses": props.upl === 5 ? "Test": props.upl ===6? "Test Upload" :"Exercises"}</h1>
         <div className="list-cours">
             
             {courses.map((course, indx) => (

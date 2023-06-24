@@ -39,7 +39,7 @@ const QuizPageContent = () => {
     for (const question of data.questions) {
       console.log("Question:", question);
       const questionResponse = await Axios.post('http://localhost:3001/api/addQuestion', {
-        id_curs: id,
+        id_curs: upl === 6 ? id + 18 : id,
         que_text: question.question,
         correct_answ: question.selectedAnswer,
       });
@@ -51,12 +51,12 @@ const QuizPageContent = () => {
   
       if (question.answers && question.answers.length > 0) {
         for (let i = 0; i < question.answers.length; i++) {
-          const answer = question.answers[i]; // Fix: Retrieve current answer
+          const answer = question.answers[i];
           console.log("Answer:", answer);
           await Axios.post('http://localhost:3001/api/addAnswer', {
             question_id: questionId,
-            answer_text: answer.name, // Fix: Use answer.name instead of question.answers[i].name
-            ic: id,
+            answer_text: answer.name,
+            ic: upl === 6 ? id + 18 : id,
           });
         }
       }
@@ -133,7 +133,7 @@ const QuizPageContent = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="create-quiz">
-      <h1>Create a quiz for {name} </h1>
+      <h1>Create a {upl ===6 ? "test " : "quiz "} for {name} </h1>
       {questions.map((question, questionIndex) => (
         <div key={question.id}>
           <div className="quiz-que-div">
@@ -175,7 +175,7 @@ const QuizPageContent = () => {
           }}
           >
         <img src={Create} />
-          Create Quiz
+          Create {upl === 6 ? "Test" : "Quiz"}
         </button>
       </div>
       

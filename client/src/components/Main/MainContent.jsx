@@ -50,10 +50,14 @@ const MainContent = (props) => {
             props.role === "student" ?
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:3, name:subjects[count].sub_name}}):
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:1, name:subjects[count].sub_name}})    
-        } else {
+        } else if (aux === 2) {
             props.role === "student" ?
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:4, name:subjects[count].sub_name}}):
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:2, name:subjects[count].sub_name}})
+        } else {
+            props.role === "student" ?
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:5, name:subjects[count].sub_name}}):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:6, name:subjects[count].sub_name}})
         }
     }
 
@@ -64,6 +68,7 @@ const MainContent = (props) => {
             <div className="buttons">
                 <button onClick={() => handleGoNextPage(1)}>{props.role === "student" ? "Learn" : "Upload Course"}</button>
                 <button onClick={() => handleGoNextPage(2)}>{props.role === "student" ? "Practice" : "Upload Exercises"}</button>
+                <button onClick={() => handleGoNextPage(3)}>{props.role === "student" ? "Test" : "Upload Test"}</button>
             </div>
             <div className="content-next">
                 <button className='content-minus' onClick={() => handleSwitch(1)}>-</button>

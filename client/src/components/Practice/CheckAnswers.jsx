@@ -37,7 +37,7 @@ export default function CheckAnswers() {
         </div>
         <h2>Total: {correctRaspuns} / {totalQue}</h2>
         <div className="check-ans-btns">
-            {correctRaspuns !== totalQue && <button 
+            {(correctRaspuns !== totalQue && upl !== 5 ) && <button 
             onClick={()=>
                 navigate('/practice',{
                     state:{id:id, upl:upl, name:name, sub_id:sub_id, sub_name:sub_name}
