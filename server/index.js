@@ -174,6 +174,19 @@ app.post('/api/addAnswer', (req,res)=>{
     })
 })
 
+app.post('/api/addTestStudent', (req,res)=>{
+
+    const id_curs = req.body.id
+    const email = req.body.email
+    const total = req.body.total
+    
+    const sqlInsert  ="INSERT INTO test_table (id_curs, email_stud, total_stud) VALUES (?, ?, ?);"
+    
+    db.query(sqlInsert,[id_curs, email,total], (err,result)=>{
+        console.log(result)
+    })
+})
+
 app.post('/api/addUser', (req,res)=>{
 
     const user = req.body.user

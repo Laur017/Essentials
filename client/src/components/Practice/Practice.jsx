@@ -13,8 +13,8 @@ export default function Practice() {
 
   useEffect(() => {
     if (location.pathname === "/practice" && location.state) {
-      const { id, upl, name, sub_id, sub_name } = location.state
-      setCourseState({ id, upl, name, sub_id, sub_name })
+      const { id, upl, name, sub_id, sub_name, email, role } = location.state
+      setCourseState({ id, upl, name, sub_id, sub_name, email, role })
       Axios.get('http://localhost:3001/api/getQuestionsForQuiz', { params: { id_cours:upl===5? id+18 : id } })
         .then((response) => {
           setCourseQuestions(response.data)
@@ -48,7 +48,9 @@ export default function Practice() {
         upl:courseState.upl, 
         name:courseState.name, 
         sub_id:courseState.sub_id, 
-        sub_name:courseState.sub_name
+        sub_name:courseState.sub_name,
+        email:courseState.email,
+        role:courseState.role
       }})
     }else{
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)

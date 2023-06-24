@@ -38,11 +38,11 @@ const ListCoursesContent = (props) => {
             })
         } else if (props.upl === 4){
             navigate('/practice',{
-                state:{id:id, upl:4, name:name, sub_id:props.sub_id, sub_name:props.name}
+                state:{id:id, upl:4, name:name, sub_id:props.sub_id, sub_name:props.name, email:props.email, role:props.role}
             })
         } else if (props.upl === 5){
             navigate('/practice',{
-                state:{id:id, upl:5, name:name, sub_id:props.sub_id, sub_name:props.name}
+                state:{id:id, upl:5, name:name, sub_id:props.sub_id, sub_name:props.name, email:props.email, role:props.role}
             })
         }else if (props.upl === 6){
             navigate('/create-quiz',{

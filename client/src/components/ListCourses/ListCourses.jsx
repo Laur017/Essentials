@@ -3,11 +3,11 @@ import {useLocation} from 'react-router-dom'
 
 const ListCourses = () => {
     const location = useLocation()
-    const {sub_id, upl, name} = location.state
+    const {sub_id, upl, name, email, role} = location.state
 
     return(
         <>
-            <ListCoursesContent sub_id = {sub_id} upl = {upl} name = {name}/>
+            <ListCoursesContent sub_id = {sub_id} upl = {upl} name = {name} email = {email} role = {role}/>
         </>
     )
 }

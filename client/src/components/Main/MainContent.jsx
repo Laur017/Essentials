@@ -48,16 +48,16 @@ const MainContent = (props) => {
     const handleGoNextPage = (aux) => {
         if (aux === 1){
             props.role === "student" ?
-            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:3, name:subjects[count].sub_name}}):
-            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:1, name:subjects[count].sub_name}})    
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:3, name:subjects[count].sub_name, email:props.email, role:props.role}}):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:1, name:subjects[count].sub_name, email:props.email, role:props.role}})    
         } else if (aux === 2) {
             props.role === "student" ?
-            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:4, name:subjects[count].sub_name}}):
-            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:2, name:subjects[count].sub_name}})
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:4, name:subjects[count].sub_name, email:props.email, role:props.role}}):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:2, name:subjects[count].sub_name, email:props.email, role:props.role}})
         } else {
             props.role === "student" ?
-            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:5, name:subjects[count].sub_name}}):
-            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:6, name:subjects[count].sub_name}})
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:5, name:subjects[count].sub_name, email:props.email, role:props.role}}):
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:6, name:subjects[count].sub_name, email:props.email, role:props.role}})
         }
     }
 
