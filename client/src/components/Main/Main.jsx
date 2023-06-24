@@ -26,7 +26,7 @@ const Main = () => {
         <div className="main-plata">
           <h1>If you want to use the 
             courses that the teachers are providing you should
-            pay a fee of $10 
+            pay a fee of $5 
           </h1>
           <div>
           <PayPalScriptProvider options={{"client-id":"AYbapIMjwUbmxI1BTDW0_F6bJ0VoSbpWJ5Rk1_QBdkASecauWOgxB43Jtzp4IPTxVKi2jDpRfHO7DgaB"}}>
@@ -36,7 +36,7 @@ const Main = () => {
                   purchase_units: [
                     {
                       amount: {
-                        value: "10.00",
+                        value: "5.00",
                       },
                     },
                   ],

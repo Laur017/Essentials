@@ -49,7 +49,7 @@ const Admin = () =>{
             setStudentsList(response.data)
             const stYearValues = response.data.map(student => Math.round(student.subject.split(",").length / 2))
             setStYear([...stYearValues])
-            setTotalMoney(response.data.length * 10)
+            setTotalMoney(response.data.length * 5)
         })
         
     },[])
@@ -161,7 +161,7 @@ const Admin = () =>{
                 <h3>Username</h3>
                 <h3>Email</h3>
                 <h3>Year</h3>
-                <h3>To Pay</h3>
+                {/* <h3>To Pay</h3> */}
             </div>
             <hr />
             {teachersList.length !==0 ?teachersList.map(i=>
@@ -170,7 +170,7 @@ const Admin = () =>{
                     <h4>{i.user}</h4>
                     <h4>{i.email}</h4>
                     <h4>{i.subject.split(",").map(k => k<3?"I ": k<5 ? "II " : "III " )}</h4>
-                    <h4>{i.subject.split(",").map(k => {
+                    {/* <h4>{i.subject.split(",").map(k => {
                         let total
                         if (k < 3) {
                             total = stYear.filter(x => x === 1).length * 6 / (nrOfTeachers[0]) +
@@ -186,7 +186,7 @@ const Admin = () =>{
                             return (studentsList.length ? Number(Math.round(total+'e2')+'e-2'):0);
                         }
                         }).reduce((partialSum, a) => partialSum + a, 0)}</h4>
-                    
+                     */}
                 </div>)
             ): 
             <div className="empty-box">
@@ -195,7 +195,7 @@ const Admin = () =>{
             </div>
             }
             <hr />
-            <button className="pay-teachers-btn" onClick={()=>handlePay()}><strong>$ </strong>Pay Teachers <strong> $</strong></button>
+            {/* <button className="pay-teachers-btn" onClick={()=>handlePay()}><strong>$ </strong>Pay Teachers <strong> $</strong></button> */}
         </>
         
         :        
