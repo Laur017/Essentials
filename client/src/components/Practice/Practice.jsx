@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import Axios from 'axios'
+import Confetti from "react-confetti"
 
 export default function Practice() {
   const [courseState, setCourseState] = useState({})
@@ -10,6 +11,34 @@ export default function Practice() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const navigate = useNavigate()
   const location = useLocation()
+
+  const CountdownTimer = () => {
+    const [timeLeft, setTimeLeft] = useState(5);
+  
+    useEffect(() => {
+      if (timeLeft === 0) {
+        alert("Time is up!");
+        handleNextQuestion()
+      }
+  
+      const timer = setTimeout(() => {
+        setTimeLeft(timeLeft - 1);
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }, [timeLeft]);
+  
+    const formatTime = (time) => {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    };
+  
+    return (
+      <h1>{formatTime(timeLeft)}</h1>
+    );
+  };
+
 
   useEffect(() => {
     if (location.pathname === "/practice" && location.state) {
@@ -98,6 +127,7 @@ export default function Practice() {
   return (
     <div className='practice-div'>
       <h1>{courseState.name} {courseState.upl === 5 ? "Test" : "Quiz"}</h1>
+      {courseState.upl === 5 && <CountdownTimer />}
       {courseQuestions.length > 0 && <Intrebarile />}
     </div>
   )

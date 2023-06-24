@@ -138,8 +138,8 @@ const Learn = () => {
                 width={width}
                 height={height}
               />;
+              alert("Timer is up!");
               handleRestartTimer(q === 1 ? 2 : 1);
-              window.alert("Timer is up!");
             } else {
               setMM((prevMinutes) => prevMinutes - 1);
               setSS(59);
