@@ -16,7 +16,7 @@ import QuizPage from './components/CreateQuiz/QuizPage'
 import ListCourses from './components/ListCourses/ListCourses'
 import Practice from './components/Practice/Practice'
 import CheckAnswers from './components/Practice/CheckAnswers'
-
+import TestResults from './components/TestResults/TestResults'
 
 const App = () => {
   const [logged, setLogged] = useState(false)
@@ -35,8 +35,6 @@ const App = () => {
     setEmail(email)
     setRole(role)
   }
-
-// TODO: Send info from the child to the parrent 
 
   return (
     <div className="App">
@@ -76,6 +74,7 @@ const App = () => {
         <Route path='/learn' element={<Learn />} />
         <Route path='/practice' element={<Practice />} />
         <Route path='/results' element={<CheckAnswers />} />
+        <Route path='/test-results' element={<TestResults />} />
 
 
       </Routes>

@@ -108,6 +108,20 @@ app.get('/api/getQuestionsForQuiz', (req,res)=>{
 
 })
 
+app.get('/api/getTestResults', (req,res)=>{
+    const sqlSelect =
+    "SELECT user, email, total_stud FROM test_table t JOIN users u WHERE t.email_stud = u.email AND t.id_curs = ? AND u.year = ?;"
+
+    const id_curs = req.query.id_curs
+    const year = req.query.year
+    
+    db.query(sqlSelect, [id_curs,year], (err, result) => {
+        res.send(result)
+        console.log(result)
+        })
+
+})
+
 app.get('/api/getAnswersForQuiz', (req,res)=>{
     const sqlSelect =
     "SELECT id_answer, answer_text,question_id FROM answers WHERE ic = ?;"

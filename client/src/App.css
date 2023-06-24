@@ -1631,4 +1631,36 @@ hr{
       padding: 1em 0;
     }
   }
+
+  /**
+  *   Test Results
+  */
+
+  .test-result-div{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .result-test-table{
+    /* text-align: center; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5em;
+  }
+
+  .result-test-table > h3 {
+    text-align: center;
+    /* background-color: yellow; */
+    width: 10em;
+  }
+
+  .result-test-table > h4:nth-child(3){
+      margin-left: 7em;
+  }
+
+  .test-result-div > hr {
+    width: 100%;
+  }
  

@@ -7,7 +7,6 @@ const MainContent = (props) => {
     const [subjects, setSubjects] = useState([])
     const [count, setCount] = useState(0)
     const navigate = useNavigate()
-    const location = useLocation()
 
     useEffect(() => {
         Axios.get('http://localhost:3001/api/getAvailableSubjects', {
@@ -54,10 +53,12 @@ const MainContent = (props) => {
             props.role === "student" ?
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:4, name:subjects[count].sub_name, email:props.email, role:props.role}}):
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:2, name:subjects[count].sub_name, email:props.email, role:props.role}})
-        } else {
+        } else if (aux ===3){
             props.role === "student" ?
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:5, name:subjects[count].sub_name, email:props.email, role:props.role}}):
             navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:6, name:subjects[count].sub_name, email:props.email, role:props.role}})
+        } else {
+            navigate("/courses-list", {state:{sub_id: subjects[count].sub_id, upl:7, name:subjects[count].sub_name, email:props.email, role:props.role}})
         }
     }
 
@@ -69,6 +70,7 @@ const MainContent = (props) => {
                 <button onClick={() => handleGoNextPage(1)}>{props.role === "student" ? "Learn" : "Upload Course"}</button>
                 <button onClick={() => handleGoNextPage(2)}>{props.role === "student" ? "Practice" : "Upload Exercises"}</button>
                 <button onClick={() => handleGoNextPage(3)}>{props.role === "student" ? "Test" : "Upload Test"}</button>
+                {props.role === "teacher" && <button onClick={() => handleGoNextPage(4)}>Show Test Results</button>}
             </div>
             <div className="content-next">
                 <button className='content-minus' onClick={() => handleSwitch(1)}>-</button>
