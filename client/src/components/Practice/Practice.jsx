@@ -11,10 +11,10 @@ export default function Practice() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const navigate = useNavigate()
   const location = useLocation()
-
+  const [timeLeft, setTimeLeft] = useState(300);
+ 
   const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState(5);
-  
+
     useEffect(() => {
       if (timeLeft === 0) {
         alert("Time is up!");
@@ -128,7 +128,7 @@ export default function Practice() {
     <div className='practice-div'>
       <h1>{courseState.name} {courseState.upl === 5 ? "Test" : "Quiz"}</h1>
       {courseState.upl === 5 && <CountdownTimer />}
-      {courseQuestions.length > 0 && <Intrebarile />}
+      {courseQuestions.length > 0 && <Intrebarile timeLeft={timeLeft} />}
     </div>
   )
 }
