@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import bcrypt from 'bcryptjs'
 
 const Login = (props) => {
     const [usersInfo, setUsersInfo] = useState([])
@@ -28,7 +29,17 @@ const Login = (props) => {
             navigate('/mainadmin')
         }else{
         usersInfo.forEach(i => {
-            if(i.email === email && i.password === password){
+            if(i.email === email){
+                bcrypt.compare(password, i.password, function(err, isMatch){
+                    if(err){
+                        throw err
+                    } else if (!isMatch){
+                        alert("Password doesn't match !")
+                    } else {
+                        props.settingUser(i.user, i.email, i.role)
+                        navigate('/main', { state:{email:i.email, role:i.role, paid:i.paid}})
+                    }
+                })
                 userFound = true
                 props.settingUser(i.user, i.email, i.role)
                 navigate('/main', { state:{email:i.email, role:i.role, paid:i.paid}})

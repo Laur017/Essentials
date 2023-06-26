@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import bcrypt from 'bcryptjs'
 
 const SignUp = () => {
     const [username, setUsername] = useState('')
@@ -75,7 +76,7 @@ const SignUp = () => {
         }else if(!teacher && !year){
             alert(' Select the year of study ! ')
         } else{
-            Axios.post('http://localhost:3001/api/insert', {username:username, email:email, password:password, teacher:teacher, subject:subject.join(","), year:teacher?"3":year})
+            Axios.post('http://localhost:3001/api/insert', {username:username, email:email, password:bcrypt.hashSync(password,10), teacher:teacher, subject:subject.join(","), year:teacher?"3":year})
             .then(()=>{
                 console.log("User added !")
             })
