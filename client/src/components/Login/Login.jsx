@@ -34,7 +34,7 @@ const Login = (props) => {
                     if(err){
                         throw err
                     } else if (!isMatch){
-                        alert("Password doesn't match !")
+                        // alert("Password doesn't match !")
                     } else {
                         props.settingUser(i.user, i.email, i.role)
                         navigate('/main', { state:{email:i.email, role:i.role, paid:i.paid}})

@@ -14,7 +14,7 @@ export default function HomeModel() {
     <Canvas >
     {/* <OrbitControls /> */}
     <Suspense fallback={<Loader />}>
-      <Room scale={0.7} position={[0, -1, -4]} rotation={[0.5, 2.3, 0]}/>
+      <Room scale={0.7} position={[0, -2, -4]} rotation={[0.5, 2.3, 0]}/>
       <ambientLight intensity={0.5} />
       <directionalLight />
     </Suspense>

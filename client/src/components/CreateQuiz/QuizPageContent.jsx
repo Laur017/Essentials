@@ -169,9 +169,9 @@ const QuizPageContent = () => {
           onClick={(e) => {
             e.preventDefault()
             handleSubmit(onSubmit)
-            navigate('/courses-list', {
-              state: { sub_id: sub_id, upl: upl, name: sub_name },
-            })
+            // navigate('/courses-list', {
+            //   state: { sub_id: sub_id, upl: upl, name: sub_name },
+            // })
           }}
           >
         <img src={Create} />
